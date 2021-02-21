@@ -1,0 +1,22 @@
+
+.extcal-calendar  td {
+  border: 1px solid black;
+  background-color: rgba(0, 255, 0,.5);  
+
+}        
+
+.extcal-calendar  tr:hover{
+
+  background-color: #F00000;  
+   opacity:1;
+
+}       
+.extcal-calendar  td:hover{
+
+  background-color: #F50000;  
+   opacity:1;
+
+}
+
+
+           
