@@ -1,2 +1,44 @@
 # extcal
- Module de caalendrier pour xoops
+ Module d'agenda et de calendrier pour Xoops
+ 
+ Avertissement:
+-----------
+Cette version du module n'est peut-être plus compatible avec d'anciennes versions ou des versions existantes.
+Les modifications apportées à ce module l'ont été exclusivement à l'usage des sites que je maintiens.
+Leur utilisation est libre comme tous les autres modules Xoops, mais aucune garantie n'est engagée quant à leur mise à jour sur des versions déjà installées.
+Les renommer eut été très compliqué, d'autant que les noms des tables ont été conservés.
+Attention certaines tables auront pu être ajoutées, modifiées ou supprimées.
+Cependant pour une nouvelle installation ils sont entièrement fonctionnels.
+Certains des modules de ce dépôt sont des reprises de modules qui ne sont plus maintenus, voir abandonnés, et qui ont été mis à niveau pour fonctionner avec les versions minimum suivantes :
+-	Xoops : 2.5.10
+-	ModuleAdmin  : 1.2  
+-	PHP : 7.3.x
+-	MySql : 5.5.x
+
+Consultez le fichier "docs/changelog.txt" du module pour consulter les changements apportés à ce dernier.
+Les modules de ce dépôt seront maintenus tant que les sites qui les utilisent seront eux-mêmes maintenus.
+http://sages91.fr/
+http://origami.jubile.fr/
+https://pliart.jubile.fr/
+etc. 
+-------------------------------------------------------------------------
+This version of the module may no longer be compatible with older or existing versions.
+The modifications made to this module were made exclusively for the use of the sites that I maintain.
+Their use is free like all the other Xoops modules, but no guarantee is made as to their updating on versions already installed.
+Renaming them would have been very complicated, especially since the names of the tables were kept.
+Please note that some tables may have been added, modified or deleted.
+However, for a new installation they are fully functional.
+Some of the modules in this repository are takeovers of modules that are no longer maintained, or even abandoned, and which have been upgraded to work with the following minimum versions:
+- Xoops: 2.5.10
+- ModuleAdmin: 1.2
+- PHP: 7.3.x
+- MySql: 5.5.x
+
+See the module's "docs/changelog.txt" file for changes to the module.
+The modules of this repository will be maintained as long as the sites which use them are themselves maintained.
+http://sages91.fr/
+http://origami.jubile.fr/
+https://pliart.jubile.fr/
+etc. 
+-------------------------------------------------------------------------
+contact : JJDai sur https://www.frxoops.org/
