@@ -34,6 +34,7 @@ CREATE TABLE `extcal_event` (
   `event_picture1`      VARCHAR(255) NOT NULL,
   `event_picture2`      VARCHAR(255) NOT NULL,
   `event_price`         VARCHAR(255) NOT NULL DEFAULT '',
+  `event_alert`         VARCHAR(255) NOT NULL DEFAULT '',
   `dohtml`              TINYINT(1)   NOT NULL DEFAULT '0',
   `event_icone`         VARCHAR(50)  NOT NULL,
   PRIMARY KEY (`event_id`)

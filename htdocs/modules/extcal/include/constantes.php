@@ -34,7 +34,7 @@ define('_EXTCAL_URL', XOOPS_URL . "/modules/" .  _EXTCAL_MODULE );
 define('_EXTCAL_PATH', XOOPS_ROOT_PATH . '/modules/' . _EXTCAL_MODULE);
 $extcalDirName = _EXTCAL_MODULE ;
 //echo _EXTCAL_URL . "<hr>";
-define('_EXTCAL_HIGHSLIDE', XOOPS_URL . '/Frameworks/highslide-500');
+//define('_EXTCAL_HIGHSLIDE', XOOPS_URL . '/Frameworks/highslide-500');
 define('_EXTCAL_THUMBS', 'thumbs');
 
 define('_EXTCAL_IMG', _EXTCAL_URL . "/images/");

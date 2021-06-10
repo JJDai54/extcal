@@ -40,7 +40,7 @@ $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
 $form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
 $form->addElement(getListDays($day));
-$form->addElement(Extcal\Utility::getListCategories($cat));
+$form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
 $form->addElement(new \XoopsFormButton('', '', _SUBMIT, 'submit'));
 
 // Assigning the form to the template

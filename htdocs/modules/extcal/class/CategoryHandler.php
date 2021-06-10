@@ -150,11 +150,33 @@ class CategoryHandler extends ExtcalPersistableObjectHandler
     public function getAllCat($user, $perm = 'extcal_cat_view')
     {
         $criteriaCompo = new \CriteriaCompo();
-        if ('all' !== $perm) {
+        if ($perm !== 'all') {
             $this->addCatPermCriteria($criteriaCompo, $user, $perm);
         }
-
+//         if ($catId > 0){
+//             $criteriaCompo->add(new \Criteria('cat_id', $catId));
+//         }
         return $this->getObjects($criteriaCompo);
+    }
+    
+    /**
+     * @param        $user
+     * @param string $perm
+     *
+     * @return array
+     */
+    public function getAllCatArray($user, $perm = 'extcal_cat_view')
+    {
+    global $allCatsAllowed;
+        if (count($allCatsAllowed) > 0) return $allCatsAllowed; // JJDai a remplcer par null serait plus judicieux
+        //----------------------------------------------
+        $catsArray = $this->objectToArray($this->getAllCat($user, $perm));
+        $catsKey = array();
+        
+        foreach ($catsArray AS $k=>$v){
+            $catsKey[$v['cat_id']] = $v;
+        }
+        return $catsKey;
     }
 
     /**

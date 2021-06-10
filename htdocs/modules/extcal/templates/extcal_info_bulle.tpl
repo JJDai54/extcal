@@ -20,7 +20,10 @@
               <b><{$smarty.const._MD_EXTCAL_END}></b> : <{$event.formated_event_end_infobulle}>
               <{if $event.location <> ''}><br><{$smarty.const._MD_EXTCAL_LOCATION}></b> : <{$event.location.nom}><{/if}>
             </em>
-
+            <{if $event.event_alert <> ''}>
+                <em style="color:red;"><{$smarty.const._MD_EXTCAL_ALERT}> : <{$event.event_alert}></em>
+            <{/if}>
+            
       </span>
     </a>
 <{else}>

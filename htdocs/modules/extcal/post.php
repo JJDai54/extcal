@@ -77,6 +77,7 @@ if (\Xmf\Request::hasVar('form_preview', 'POST')) {
         'dohtml'             => (int)$helper->getConfig('allow_html'),
         'event_price'        => $_POST['event_price'],
         'event_organisateur' => $_POST['event_organisateur'],
+        'event_alert'        => $_POST['event_alert'],
         'event_icone'        => $_POST['event_icone'],
     ];
 
@@ -149,6 +150,7 @@ if (\Xmf\Request::hasVar('form_preview', 'POST')) {
         'event_desc'         => $_POST['event_desc'],
         'event_nbmember'     => $_POST['event_nbmember'],
         'event_organisateur' => $_POST['event_organisateur'],
+        'event_alert'        => $_POST['event_alert'],
         'event_contact'      => $_POST['event_contact'],
         'event_url'          => $_POST['event_url'],
         'event_email'        => $_POST['event_email'],

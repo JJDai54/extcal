@@ -45,6 +45,7 @@ class Event extends \XoopsObject
         $this->initVar('event_title', XOBJ_DTYPE_TXTBOX, null, true, 255);
         $this->initVar('event_desc', XOBJ_DTYPE_TXTAREA, '', false);
         $this->initVar('event_organisateur', XOBJ_DTYPE_TXTBOX, '', false);
+        $this->initVar('event_alert', XOBJ_DTYPE_TXTBOX, '', false);
         $this->initVar('event_contact', XOBJ_DTYPE_TXTBOX, '', false);
         $this->initVar('event_url', XOBJ_DTYPE_URL, '', false);
         $this->initVar('event_email', XOBJ_DTYPE_TXTBOX, '', false);

@@ -128,7 +128,8 @@ function bExtcalMinicalShow($options)
             'periode'      => _EXTCAL_EVENTS_MONTH,
             'month'        => $month,
             'year'         => $year,
-            'category'     => $tCatSelected,
+            'category'     => $tCatSelected, //JJDai a verifier le nom de la clé
+            //'cat'     => $tCatSelected,
             'externalKeys' => 'cat_id', //array( 'cat_id','location_id') location n'est pas utile ici
         ];
         $events   = $eventHandler->getEventsOnPeriode($criteres);

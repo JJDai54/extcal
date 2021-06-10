@@ -1,4 +1,3 @@
-change
 <?php
 /*
  * You may not change or alter any portion of this comment or credits
@@ -37,7 +36,7 @@ setlocale(LC_TIME, $xoopsConfig['language']);
 //if (!defined('_EXT_TPL_EXTENSION')) define ('_EXT_TPL_EXTENSION', '.html');
                                 
 //***************************************************************************************
-$modversion['version']          = '2.8';
+$modversion['version']          = '2.81';
 $modversion['module_status']    = 'Beta 1';
 $modversion['release_date']     = '2020/03/02';
 $modversion['name']             = _MI_EXTCAL_NAME;
@@ -400,12 +399,26 @@ $modversion['config'][$i]['formtype']    = 'yesno';
 $modversion['config'][$i]['valuetype']   = 'int';
 $modversion['config'][$i]['default']     = 1;
 ++$i;
-$modversion['config'][$i]['name']        = 'allowed_file_extention';
-$modversion['config'][$i]['title']       = '_MI_EXTCAL_FILE_EXTENTION';
-$modversion['config'][$i]['description'] = '_MI_EXTCAL_FILE_EXTENTION_DESC';
-$modversion['config'][$i]['formtype']    = 'select_multi';
-$modversion['config'][$i]['valuetype']   = 'array';
-$modversion['config'][$i]['default']     = ['doc', 'jpg', 'jpeg', 'gif', 'png', 'pdf', 'txt'];
+$modversion['config'][$i] = [
+    'name'        => 'allowed_file_extention',
+    'title'       => '_MI_EXTCAL_FILE_EXTENTION',
+    'description' => '_MI_EXTCAL_FILE_EXTENTION_DESC',
+    'formtype'    => 'select_multi',
+    'valuetype'   => 'array',
+    'options'     => include $GLOBALS['xoops']->path('include/mimetypes.inc.php'),
+    'default'     => ['doc','dot','pdf','gz','zip','bmp','gif','jpeg','jpg','jpe','png','tiff','tif','csv','rtf','mpeg','mov','avi','mp4','docx','ppsx'],
+    ];
+
+// Admin framework highslide
+++$i;
+$modversion['config'][$i] = [
+    'name'        => 'highslide',
+    'title'       => '_MI_EXTCAL_HIGHSLIDE',
+    'description' => '_MI_EXTCAL_HIGHSLIDE_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'string',
+    'default'     => 'highslide-5.0.0',
+];
 
  /*
 $modversion['config'][$i]['options']     = include XOOPS_ROOT_PATH . '/include/mimetypes.inc.php';

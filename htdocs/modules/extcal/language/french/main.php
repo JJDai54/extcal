@@ -271,3 +271,7 @@ define('_MD_EXTCAL_NO_RECCUR',"Non récurrent");
 define('_MD_EXTCAL_FORMOK',"Sauvegardé avec succès");
 define('_MD_EXTCAL_ALL_CAT',"Toutes catégories");
 define('_MD_EXTCAL_TODAY',"Aujourd&apos;hui");
+
+define('_MD_EXTCAL_ALERT',"Alerte");
+define('_MD_EXTCAL_EVENT_ALERT',"Alerte");
+define('_MD_EXTCAL_EVENT_ALERT_DESC',"Message affiché en rouge dans les info-bulles. Permet d'indiquer une annulation, un report, ...");

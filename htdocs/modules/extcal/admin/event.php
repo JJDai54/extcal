@@ -109,6 +109,7 @@ switch ($op) {
             'event_desc'         => $_POST['event_desc'],
             'event_nbmember'     => $_POST['event_nbmember'],
             'event_organisateur' => $_POST['event_organisateur'],
+            'event_alert'        => $_POST['event_alert'],
             'event_contact'      => $_POST['event_contact'],
             'event_url'          => $_POST['event_url'],
             'event_email'        => $_POST['event_email'],
@@ -382,7 +383,7 @@ switch ($op) {
         //----------------------------------------------------
         echo '<form id="search" name="search" method="POST" action="event.php">';
         if (!isset($cat)) $cat = '';
-        echo getListCategories($sel_cat, _ALL, "sel_cat")->render();
+        echo getXoopsFormSelectCategories($sel_cat, _ALL, "sel_cat")->render();
         echo getListApproved($sel_approved, _ALL, "sel_approved")->render();
         echo '<input type="submit" value="' . _AM_EXTCAL_SEARCH . '" name="search">';
         echo '<input type="hidden" name="op" value="list">';

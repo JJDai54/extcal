@@ -19,7 +19,7 @@ get_params_YMDC($year, $month, $day, $cat);
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
 $form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
-$form->addElement(Extcal\Utility::getListCategories($cat));
+$form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
 $form->addElement(new \XoopsFormButton('', '', _SUBMIT, 'submit'));
 // Assigning the form to the template
 $form->assign($xoopsTpl);
@@ -41,7 +41,7 @@ $criteres = [
 $events   = $eventHandler->getEventsOnPeriode($criteres);
 /**********************************************************************/
 $eventsArray = $events;
-
+//ext_echo($eventsArray);
 // Formating date
 //$eventHandler->formatEventsDate($events, $helper->getConfig('event_date_year'));
 

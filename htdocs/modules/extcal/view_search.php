@@ -46,7 +46,7 @@ $search['month'] = getListMonths($month, true)->render();
 $search['day']   = getListDays($day, true)->render();
 
 //$search['cat']   = implode('', getCheckeCategories());
-$search['cat'] = Extcal\Utility::getListCategories($cat, ' ', 'cat')->render();
+$search['cat'] = Extcal\Utility::getXoopsFormSelectCategories($cat, ' ', 'cat')->render();
 
 $search['orderby1'] = Extcal\Utility::getListOrderBy('orderby1', '', $orderby1, false)->render();
 $search['orderby2'] = Extcal\Utility::getListOrderBy('orderby2', '', $orderby2, true)->render();
@@ -59,7 +59,7 @@ $xoopsTpl->assign('search', $search);
 // $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
 // // $form->addElement(getListYears($year,$helper->getConfig('agenda_nb_years_before'),$helper->getConfig('agenda_nb_years_after'), true));
 // // $form->addElement(getListMonths($month, rtue));
-// $form->addElement(getListCategories($cat));
+// $form->addElement(getXoopsFormSelectCategories($cat));
 // $form->addElement(Extcal\Utility::getListOrderBy($orderby));
 //
 // $form->addElement( new \XoopsFormText(_MD_EXTCAL_SEARCH_EXP, 'searchExp', 80, 80, $searchExp));

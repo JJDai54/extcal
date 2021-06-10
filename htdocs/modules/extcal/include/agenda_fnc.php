@@ -297,7 +297,7 @@ global $helper;
   }
 
   if(!is_null($cat)){
-    $lstCat = Extcal\Utility::getListCategories($cat);
+    $lstCat = Extcal\Utility::getXoopsFormSelectCategories($cat);
     $lstCat->setExtra($jsOnChange);
     $tSearch['categorie'] = $lstCat->render();
   }
@@ -320,20 +320,42 @@ global $helper;
  *
  ******************************************************************/
  function get_params_YMDC(&$year, &$month, &$day, &$cat){
-    $today = \Xmf\Request::getString('form_submit_today', '', 'GET');
+ global $allCatsAllowed; //JJDai provisoire, a passer en paramettre de preference
+    $today = \Xmf\Request::getString('form_submit_today', '', 'REQUEST');
     //echo "===> toDay = |" . $today . "|<br>";
     if ($today == ''){
-      $year  = \Xmf\Request::getInt('year', date('Y'), 'GET');
-      $month = \Xmf\Request::getInt('month', date('n'), 'GET');
-      $day   = \Xmf\Request::getInt('day', date('j'), 'GET');
+      $year  = \Xmf\Request::getInt('year', date('Y'), 'REQUEST');
+      $month = \Xmf\Request::getInt('month', date('n'), 'REQUEST');
+      $day   = \Xmf\Request::getInt('day', date('j'), 'REQUEST');
     }else{
       $year  = date("Y");
       $month = date("n");
       $day = date("j");
     }
-    $cat   = \Xmf\Request::getInt('cat', 0, 'GET');
+    $cat   = \Xmf\Request::getInt('cat', 0, 'REQUEST');
+    if (!array_key_exists ($cat,$allCatsAllowed)){
+        $cat = 0;
+    }
 
  }
+// /*******************************************************************
+//  *
+//  ******************************************************************/
+//  function get_params_YMDC(&$year, &$month, &$day, &$cat){
+//     $today = \Xmf\Request::getString('form_submit_today', '', 'GET');
+//     //echo "===> toDay = |" . $today . "|<br>";
+//     if ($today == ''){
+//       $year  = \Xmf\Request::getInt('year', date('Y'), 'GET');
+//       $month = \Xmf\Request::getInt('month', date('n'), 'GET');
+//       $day   = \Xmf\Request::getInt('day', date('j'), 'GET');
+//     }else{
+//       $year  = date("Y");
+//       $month = date("n");
+//       $day = date("j");
+//     }
+//     $cat   = \Xmf\Request::getInt('cat', 0, 'GET');
+// 
+//  }
 /*******************************************************************
  *
  ******************************************************************

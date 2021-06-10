@@ -35,7 +35,7 @@ get_params_YMDC($year, $month, $day, $cat);
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
 $form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
-$form->addElement(Extcal\Utility::getListCategories($cat));
+$form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
 $form->addElement(new \XoopsFormButton('', 'form_submit', _SUBMIT, 'submit'));
 
 // Assigning the form to the template
@@ -55,9 +55,10 @@ $criteres = [
     'year'         => $year,
     'cat'          => $cat,
     'externalKeys' => array( 'cat_id','location_id')
-];
+    ];
+//ext_echo($criteres,"view_calendar_month");
 $events   = $eventHandler->getEventsOnPeriode($criteres); //, "extcal_rs_event"
-//ext_echo($events,"");
+//ext_echo($events,"pppppppppppppppppppp");
 
 // ext_echo($criteres,"");
 //$events = $eventHandler->getEventsOnPeriode($criteres); //, "extcal_rs_event"
@@ -84,6 +85,7 @@ foreach ($events as $event) {
 
     $eventHandler->addEventToCalArray($event, $eventsArray, $startMonth, $endMonth);
 }
+//ext_echo($eventsArray,"zzzzz");
 
 // $tr=print_r($eventsArray,true);
 // echo "<pre>{$tr}</pre>";
@@ -119,6 +121,7 @@ while ($weekCalObj = $monthCalObj->fetch()) {
             'number'     => $dayCalObj->thisDay(),
             'isSelected' => $dayCalObj->isSelected(),
         ];
+        //echo "<hr>dayCalObj->thisDay()] = " . $dayCalObj->thisDay() . " - count = " . count($eventsArray[$dayCalObj->thisDay()]) ."<hr>";
         if (@count($eventsArray[$dayCalObj->thisDay()]) > 0 && !$dayCalObj->isEmpty()) {
             $tableRows[$rowId]['week'][$cellId]['events'] = $eventsArray[$dayCalObj->thisDay()];
         } else {
@@ -134,9 +137,9 @@ while ($weekCalObj = $monthCalObj->fetch()) {
 $xoopsTpl->assign('tableRows', $tableRows);
 
 // Retriving categories
-$cats = $catHandler->objectToArray($catHandler->getAllCat($xoopsUser));
+
 // Assigning categories to the template
-$xoopsTpl->assign('cats', $cats);
+$xoopsTpl->assign('cats', $allCatsAllowed);
 
 // Retriving weekdayNames
 //$weekdayNames = Calendar_Util_Textual::weekdayNames();

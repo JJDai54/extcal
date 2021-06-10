@@ -207,3 +207,7 @@ define('_MI_EXTCAL_BNAME8',"Extcal-Menu catégories pour theme xbootstrap");
 define('_MI_EXTCAL_BNAME8_DESC',"Block a utiliser pour menu dans les themes xbootstrap");
 
 define('_MI_EXTCAL_MINICAL_SHOW_SAINT',"afficher le saint dans le minical");
+
+define('_MI_EXTCAL_HIGHSLIDE', 'Framework "highslide"');
+define('_MI_EXTCAL_HIGHSLIDE_DESC', "Dossier d'installation du framework <a href=\"http://highslide.com/\">Highslide</a>");
+

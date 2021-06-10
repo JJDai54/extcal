@@ -122,24 +122,44 @@ class Utility
      * @param string $name
      * @return \XoopsFormSelect
      */
-    public static function getListCategories($cat, $addNone = true, $name = 'cat')
+    public static function getXoopsFormSelectCategories($cat, $addNone = true, $name = 'cat')
     {
+    global $allCatsAllowed, $catHandler;
+    
         global $xoopsUser;
         // Category selectbox
-        $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
+          
 
-        $catsList  = $catHandler->getAllCat($xoopsUser);
         $catSelect = new \XoopsFormSelect('', $name, $cat);
         if ($addNone) {
             $catSelect->addOption(0, 'Toutes les catégories');
         }
 
-        foreach ($catsList as $catList) {
-            $catSelect->addOption($catList->getVar('cat_id'), $catList->getVar('cat_name'));
+        foreach ($allCatsAllowed as $cat) {
+            $catSelect->addOption($cat['cat_id'], $cat['cat_name']);
         }
 
         return $catSelect;
     }
+//     public static function getXoopsFormSelectCategories($cat, $addNone = true, $name = 'cat')
+//     {
+//     
+//         global $xoopsUser;
+//         // Category selectbox
+//         $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
+// 
+//         $catsList  = $catHandler->getAllCat($xoopsUser);
+//         $catSelect = new \XoopsFormSelect('', $name, $cat);
+//         if ($addNone) {
+//             $catSelect->addOption(0, 'Toutes les catégories');
+//         }
+// 
+//         foreach ($catsList as $catList) {
+//             $catSelect->addOption($catList->getVar('cat_id'), $catList->getVar('cat_name'));
+//         }
+// 
+//         return $catSelect;
+//     }
 
 /*******************************************************************
  *

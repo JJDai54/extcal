@@ -40,8 +40,15 @@ $catHandler   = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
 $eventHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);
 $timeHandler  = Extcal\Time::getHandler();
 $permHandler  = Extcal\Perm::getHandler();
+global $xoopsUser;
 $xoopsUser    = $xoopsUser ?: null;
 //------------------------------------------------------
+//$allCatsAllowed = $catHandler->objectToArray($catHandler->getAllCat($xoopsUser));
+//JJDai declarer comme global dans les fonction qui l'utilise, il faudrait je pense le passer en parametre
+$allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
+//ext_echo ($allCatsAllowed,"===> Header");
+//------------------------------------------------------
+
 // Tooltips include
 /** @var xos_opal_Theme $xoTheme */
 if (!isset($GLOBALS['xoTheme']) || !is_object($GLOBALS['xoTheme'])) {

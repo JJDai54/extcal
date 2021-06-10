@@ -62,14 +62,35 @@ require_once XOOPS_ROOT_PATH . '/class/uploader.php';
     {
         return date($formatDate, $v);
     }
+    
+/**
+ * @param        $exp
+ * @param string $msg
+ */
+function ext_cat_echo($cat)
+{
+    if (is_array($cat)){
+        echo "<br>===>ext_cat_echo : cat est un tableau<br>";
+        ext_echo($cat);
+    }elseif(is_string($cat)){
+        echo "<br>===>ext_cat_echo : cat est une chaine ===> cat : {$cat}<br>";        
+    }elseif(is_integer($cat)){
+        echo "<br>===>ext_cat_echo : cat est une entier  ===> cat : {$cat}<br>";        
+    }else{
+        echo "<br>===>ext_cat_echo : cat a voir<br>";        
+    }
+}
+
 
 /**
  * @param        $exp
  * @param string $msg
  */
-function ext_echo($exp, $strExit = '', $addHR = false)
+function ext_echo($exp, $Title = '', $addHR = false, $bExit = false)
 {
 if ($addHR) echo "<hr>===> BEGIN<br>";
+
+    if ($Title != '' ) echo "{$Title}<br>";
 
     if (is_array($exp)){
 //      if ('' != $msg) echo "<hr>===>{$msg}<hr>";
@@ -87,9 +108,9 @@ if ($addHR) echo "<hr>===> BEGIN<br>";
     else{
           echo "===>{$exp}<br>";
     }
-if ($addHR) echo "===> END<hr>";
-
-    if ($strExit != '' ) exit($strExit);
+    //-----------------------------------------------
+    if ($addHR) echo "===> END<hr>";
+    if ($bExit) exit();
 }
 /***
  *
@@ -103,15 +124,6 @@ if ($addHR) echo "===> END<hr>";
         return $text;
     }
 
-/***
- *
- ***/
-    function ext_include_highslide()
-    {global $xoTheme;
-      $xoTheme->addScript(_EXTCAL_HIGHSLIDE . '/highslide.js');
-      $xoTheme->addScript(_EXTCAL_HIGHSLIDE . '/xoops_highslide.js');
-      $xoTheme->addStylesheet(_EXTCAL_HIGHSLIDE .'/highslide.css');
-    }
 
 /***
  *
@@ -234,8 +246,8 @@ function extcal_loadImg(&$REQUEST, &$event_picture1, &$event_picture2)
  * @param string $name
  * @return XoopsFormSelect
  */
-//function getListCategories($cat, $addNone = true, $name = 'cat')
-function getListCategories($cat, $addNone = 'Toutes les catégories', $name = 'cat')
+//function getXoopsFormSelectCategories($cat, $addNone = true, $name = 'cat')
+function getXoopsFormSelectCategories($cat, $addNone = 'Toutes les catégories', $name = 'cat')
 {
     global $xoopsUser;
     // Category selectbox
@@ -660,7 +672,66 @@ global $helper, $xoopsUser, $xoopsModule;
         return $descEditor;
 
 }
-/**************************************************************************/
 
+/***
+ *
+ ***/
 
+function ext_include_highslide(){
+global $xoTheme, $xoopsModuleConfig;
+    $xoTheme->addScript(XOOPS_URL . '/modules/extcal/assets/js/xoops_highslide.js');
+    
+    $highslide = XOOPS_URL . "/Frameworks/" . $xoopsModuleConfig['highslide'];
+    $xoTheme->addStylesheet($highslide . '/highslide.css');
+    $xoTheme->addScript($highslide     . '/highslide.js');
+    
+    //echo "===>xoops_highslide<hr>" . XOOPS_URL . '/modules/extcal/assets/js/xoops_highslide.js' . "<hr>";
+  if (!is_array($options))$options = array();
+  $options['graphicsDir'] = "{$highslide}/graphics/";
+  ext_array2js('hs', $options, false, true);
 
+}
+/*
+    function ext_include_highslide()
+    {global $xoTheme;
+      $xoTheme->addScript(_EXTCAL_HIGHSLIDE . '/highslide.js');
+      $xoTheme->addScript(_EXTCAL_HIGHSLIDE . '/xoops_highslide.js');
+      $xoTheme->addStylesheet(_EXTCAL_HIGHSLIDE .'/highslide.css');
+    }
+    /modules/extcal/assets/js/xoops_highslide.js
+            \extcal\assets\js/xoops_highslide.js
+    
+    
+*/
+/****************************************************************************
+Genere la declaration d'un tableau en javascript
+$name : nom du ta&bleau javascript
+$options : tableau associatif. les clefs seront les m^me en javascript
+$bolEcho : si true envoie directement la chaine générée dans le flus html
+retour : string a envoyer dans le flus html
+note : la balise script est ajoutée automatiquement
+ ****************************************************************************/
+function ext_array2js($name, $options, $isNew = false, $bolEcho = false){
+
+  $t = array();
+  $t[] = "\n<script type='text/javascript'>"; 
+  
+  if ($isNew){
+    $t[] = "{$name} = new Array()"; 
+  }
+  
+  foreach($options as $key=>$value){
+    if (is_numeric($value)){
+      $t[] = "{$name}.{$key} = {$value};"; 
+    }else{
+      $t[] = "{$name}.{$key} = '{$value}';"; 
+    }
+  }
+  
+  $t[] = "</script>\n"; 
+  
+  $js = implode("\n", $t);
+  if ($bolEcho) echo $js;
+  
+  return $js;
+}

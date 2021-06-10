@@ -371,11 +371,13 @@ function getUserTimestamp($time, $timeoffset = '')
 
         //Extcal\Utility::echoArray($criteres);
         $myts = \MyTextSanitizer::getInstance(); // MyTextSanitizer object
-//ext_echo($criteres,"");
+//ext_echo($criteres,"getEventsOnPeriode");
         $eventsU = $this->getEventsUniques($criteres);
-//ext_echo($eventsU,"");
+//ext_echo($eventsU,"getEventsOnPeriode");
+        //------------------------------------
         $eventsR = $this->getEventsRecurents($criteres);
         $events  = array_merge($eventsU, $eventsR);
+//ext_echo($events,"");
 if ($bEcho){
 // ext_echo($eventsU, "");
 // ext_echo($eventsR, "events");
@@ -424,18 +426,24 @@ if ($bEcho){
      */
     public function getEventsUniques($criteres)
     {
+//global $allCatsAllowed;
+global $xoopsUser, $catHandler;
+if (!isset($catHandler))    $catHandler      = \XoopsModules\Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
+$allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
 
         //        while (list($k, $v) = each($criteres)) {
         foreach ($criteres as $k => $v) {
             ${$k} = $v;
         }
+ 
 //echo "<hr>periode : {$periode}<pre>" . print_r($criteres ,true). "</pre><hr>"; //JJDai
         //---------------------------------------------
         if (!isset($nbDays))        $nbDays = 7;
         if (!isset($sens))          $sens = 'ASC';
         if (!isset($externalKeys))  $externalKeys = ['cat_id'];
-        if (!isset($cat))           $cat = 0;
-
+        //if (!isset($category))           $cat = 0;
+//ext_echo($criteres,"getEventsUniques");
+//ext_echo($cat,"getEventsUniques");
         $showEventPassed = intval(Extcal\Helper::getInstance()->getConfig('diplay_past_event_list'));
 
         //------------------------------------------------------
@@ -483,12 +491,30 @@ if ($bEcho){
         }
         //--------------------------------------------------------------------------
         $criteriaCompo->add(new \Criteria('event_isrecur', 0, '='));
-        if ($cat>0) $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
-        $criteriaCompo->setOrder($sens);
 
+        
+        if (!isset($cat)) $cat = 0;
+        if ($cat > 0 && !array_key_exists($cat, $allCatsAllowed)) $cat = 0;
+        
+        if ($cat > 0) {
+          $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
+        }elseif(count($allCatsAllowed) > 0) {
+            $catIds = implode(',', array_keys($allCatsAllowed));
+            $criteriaCompo->add(new \Criteria('cat_id', "({$catIds})", 'IN'));
+        }
+        //--------------------------------------------------------------        
+        
+        
+        
+        
+        
+        
+        
+        $criteriaCompo->setOrder($sens);
+//echo "<hr>cat : {$cat}<br>" . $criteriaCompo->renderWhere() . "<hr>";
         $result = $this->getObjects($criteriaCompo);
         $events = $this->objectToArray($result, $externalKeys);
-        //ext_echo($events, "test");
+//ext_echo($events, "test");
         $this->serverTimeToUserTimes($events);
 
         return $events;
@@ -503,6 +529,10 @@ if ($bEcho){
 
     public function getEventsRecurents($criteres)
     {
+    //return array();
+global $xoopsUser, $catHandler;
+$allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
+
         //        while (list($k, $v) = each($criteres)) {
         foreach ($criteres as $k => $v) {
             ${$k} = $v;
@@ -521,9 +551,7 @@ if ($bEcho){
         if (!isset($externalKeys)) {
             $externalKeys = ['cat_id'];
         }
-
-        if (!isset($cat)) $cat = 0;
-
+        
         //------------------------------------------------------
 
         $criteriaCompo = new \CriteriaCompo();
@@ -561,7 +589,17 @@ if ($bEcho){
         $formatDate = Extcal\Helper::getInstance()->getConfig('event_date_week');
         //--------------------------------------------------------------------------
         $criteriaCompo->add(new \Criteria('event_isrecur', 1, '='));
-        if ($cat>0) $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
+        
+        if (!isset($cat)) $cat = 0;
+        if ($cat > 0 && !array_key_exists($cat, $allCatsAllowed)) $cat = 0;
+        
+        if ($cat > 0) {
+          $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
+        }else{
+            $catIds = implode(',', array_keys($allCatsAllowed));
+            $criteriaCompo->add(new \Criteria('cat_id', "({$catIds})", 'IN'));
+        }
+        //--------------------------------------------------------------        
         $criteriaCompo->setOrder($sens);
 
         $result = $this->getObjects($criteriaCompo);
@@ -667,7 +705,7 @@ if ($bEcho){
 // $startMonth = mktime(0, 0, 0, $month, 1, $year);
 // $endMonth   = mktime(0, 0, 0, $month + 1, 1, $year)-1;
 
-
+//ext_cat_echo($cat);
 
 
         $user = $GLOBALS['xoopsUser'];
@@ -751,8 +789,10 @@ if ($bEcho){
         $criteriaCompo->add($criteriaCompoDate);
 
         $criteriaCompo->add(new \Criteria('event_approved', 1));
-        $this->addCatSelectCriteria($criteriaCompo, $cat);
-        $this->addCatPermCriteria($criteriaCompo, $user);
+        
+//         $this->addCatSelectCriteria($criteriaCompo, $cat);
+//         $this->addCatPermCriteria($criteriaCompo, $user);
+        
         $criteriaCompo->setSort('event_start');
 // echo "<hr>" . $criteriaNoRecur->render() . "<br>";
 // echo "<hr>" . $criteriaRecur->render() . "<br>";
@@ -969,24 +1009,53 @@ if ($bEcho){
 
     /**
      * @param $criteria
-     * @param $cats
+     * @param $cat
      */
-    public function addCatSelectCriteria(&$criteria, $cats = null)
+    public function addCatSelectCriteria(&$criteriaCompo, $cat = null)
     {
-        if (!is_array($cats) && $cats > 0) {
-            $criteria->add(new \Criteria('cat_id', $cats));
+    global $allCatsAllowed;
+    
+         $criteriaCompo->add(new \Criteria('event_isrecur', 1, '='));
+        
+        if (!isset($cat)) $cat = 0;
+        if ($cat > 0 && !array_key_exists($cat, $allCatsAllowed)) $cat = 0;
+        
+        if ($cat > 0) {
+          $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
+        }else{
+            $catIds = implode(',', array_keys($allCatsAllowed));
+            //if($catIds !== '')
+            if(count($allCatsAllowed) > 0) //JJDai - a revoir
+            $criteriaCompo->add(new \Criteria('cat_id', "({$catIds})", 'IN'));
+//            echo "<hr>===> addCatSelectCriteria : catIds = |{$catIds}|<br>". $criteriaCompo->renderWhere() ."<hr>";
         }
-        if (is_array($cats)) {
-            if (false === array_search(0, $cats, true)) {
-                $in = '(' . current($cats);
-                array_shift($cats);
-                foreach ($cats as $cat) {
-                    $in .= ',' . $cat;
-                }
-                $in .= ')';
-                $criteria->add(new \Criteria('cat_id', $in, 'IN'));
-            }
-        }
+        //--------------------------------------------------------------        
+
+
+
+
+
+   
+//     //exit("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+//     //$cats=array(1,2,3,4);
+//         if (!is_array($cats) && $cats > 0) {
+//     ext_echo($cats, "===> addCatSelectCriteria() ===> cats isArray() = false");
+//     echo "<br>===> addCatSelectCriteria() ===> cats isArray() = false<br>";
+//             $criteriaCompo->add(new \Criteria('cat_id', $cats));
+//         }elseif (is_array($cats)) {
+//     echo "<br>===> addCatSelectCriteria() ===> cats isArray() = true<br>";
+//             if (false === array_search(0, $cats, true)) {
+//                 $in = '(' . current($cats);
+//                 array_shift($cats);
+//                 foreach ($cats as $cat) {
+//                     $in .= ',' . $cat;
+//                 }
+//                 $in .= ')';
+//                 $criteriaCompo->add(new \Criteria('cat_id', $in, 'IN'));
+//             }
+//         }else{
+//     echo "<br>===> addCatSelectCriteria() ===> cats isArray() = ni l'un ni l'autre<br>";
+//         }
     }
 
     /**********************************************************************
@@ -1034,6 +1103,7 @@ if ($bEcho){
             $desc           = $event->getVar('event_desc', 'e');
             $nbMember       = $event->getVar('event_nbmember', 'e');
             $organisateur   = $event->getVar('event_organisateur');
+            $event_alert    = $event->getVar('event_alert');
             $contact        = $event->getVar('event_contact', 'e');
             $url            = $event->getVar('event_url', 'e');
             $email          = $event->getVar('event_email', 'e');
@@ -1099,6 +1169,7 @@ if ($bEcho){
             $desc           = $data['event_desc'];
             $nbMember       = $data['event_nbmember'];
             $organisateur   = $data['event_organisateur'];
+            $event_alert    = $data['event_alert'];
             $contact        = $data['event_contact'];
             $url            = $data['event_url'];
             $email          = $data['event_email'];
@@ -1248,6 +1319,12 @@ $xoTheme->addStylesheet('modules/extcal/include/style.css');
         // Description
         $form->addElement(getEditor(_MD_EXTCAL_DESCRIPTION, 'event_desc', $desc, 5));
 
+        //Alerte affichée dans les infos bulles (cas de suspenssion d'activité pour cause sanitaire par exemple)
+        $lib = "<pan style='color:red;'>%s</span>";
+        $inpAlert = new \XoopsFormText(sprintf($lib,_MD_EXTCAL_EVENT_ALERT), 'event_alert', 80, 255, $event_alert);
+        $inpAlert->setDescription(sprintf($lib,_MD_EXTCAL_EVENT_ALERT_DESC));
+        $form->addElement($inpAlert, false);
+
 
         // Max registered member for this event
         $nbMemberElement = new \XoopsFormText(_MD_EXTCAL_NBMEMBER, 'event_nbmember', 4, 4, $nbMember);
@@ -1263,6 +1340,7 @@ $xoTheme->addStylesheet('modules/extcal/include/style.css');
         $monnaie_price->addElement($monnaie);
         $form->addElement($monnaie_price);
         //----------------------------------------------------------------
+        //Organisateur
         $form->addElement(new \XoopsFormText(_MD_EXTCAL_ORGANISATEUR, 'event_organisateur', 80, 255, $organisateur), false);
         // Contact
         $form->addElement(new \XoopsFormText(_MD_EXTCAL_CONTACT, 'event_contact', 80, 255, $contact), false);
@@ -1270,6 +1348,7 @@ $xoTheme->addStylesheet('modules/extcal/include/style.css');
         $form->addElement(new \XoopsFormText(_MD_EXTCAL_URL, 'event_url', 80, 255, $url), false);
         // Email
         $form->addElement(new \XoopsFormText(_MD_EXTCAL_EMAIL, 'event_email', 80, 255, $email), false);
+        
 
         // Address
 
@@ -1701,7 +1780,7 @@ $xoTheme->addStylesheet('modules/extcal/include/style.css');
 
                         $event['event_start'] = $occurEventStart;
                         $event['event_end']   = $occurEventEnd;
-echo "======> event = '{$event['event_id']} | nbOccur = {$nbOccur} |  event_start = " . strDate($event['event_start']). "<br>";
+//echo "======> event = '{$event['event_id']} | nbOccur = {$nbOccur} |  event_start = " . strDate($event['event_start']). "<br>";
 
                         $recuEvents[] = $event;
                     }

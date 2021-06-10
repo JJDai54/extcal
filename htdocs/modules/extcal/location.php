@@ -120,7 +120,7 @@ if (!is_file($rep_Src . "/" ._EXTCAL_THUMBS. "/" . $location['logo'])){
     ext_redim_img($rep_Src . "/" . $location['logo'], $width=300, $height=0, _EXTCAL_THUMBS);
 }
 
-
+ext_include_highslide();
 
 
 

@@ -1,3 +1,8 @@
+
+ALTER TABLE `x251_extcal_event` ADD `event_alert` VARCHAR(255) NOT NULL AFTER `event_desc`; 
+Correction permission sur evenement récurrents
+
+
 <h5>2.5 Beta 1  [NOT RELEASED]</h5>  Dev: Xoops 2.5.9, PHP 7.3.x
 <hr>
   (JJDai : JJDelalandre@orange.fr)
@@ -20,6 +25,7 @@
    (bug de pear) remplacement par une fonction dédiée dans le module
  - Correction du nom de la classe des versions dans les mises à jour "function "xoops_module_update_extcal"),
    La majuscule du premier caractere de la classe n'était pas pris en compte ajout de "ucfirst(nom_de_la_classe")
+ - Correction filtrage des évennements selon permissions (hamonisation récurrents et non-récurrents)
 
  Ajoute de parametres dans config
  - acivation ou non des couleurs suivntes
@@ -40,7 +46,7 @@
  Base de données :
  - changement du nom "id" de la table location en "location_id" et adaptation du code
  - changement du champ "location" dans la table event en "location_id" et adaptation du code
- - Ajout des alter table dans la gestion des version
+ - Ajout des alter table dans la gestion des versions
 
 
 

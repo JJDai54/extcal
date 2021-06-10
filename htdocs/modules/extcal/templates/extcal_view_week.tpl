@@ -6,9 +6,10 @@
 
 <{*
 <script src='<{$smarty.const.XOOPS_URL}>/modules/extcal/assets/js/extcal_highslide.js' type="text/javascript"></script>
-*}>
 <script src='<{$smarty.const.XOOPS_URL}>/Frameworks/highslide-500/xoops_highslide.js' type="text/javascript"></script>
-
+<script src='<{$smarty.const.XOOPS_URL}>/modules/extcal/assets/js/xoops_highslide.js' type="text/javascript"></script>
+*}>
+                                      
 <{include file="db:extcal_event_nav_btn.tpl"}>
 
 <table class="outer" style="border-top: none;" width="100%">
