@@ -203,9 +203,6 @@ define('_MI_EXTCAL_EVENT_APPROVED', 'événements approuvés');
 define('_MI_EXTCAL_EVENT_SUBMITED', 'événements soumis');
 define('_MI_EXTCAL_TOOLS', 'Outils de maintenance');
 
-define('_MI_EXTCAL_BNAME8',"Extcal-Menu catégories pour theme xbootstrap");
-define('_MI_EXTCAL_BNAME8_DESC',"Block a utiliser pour menu dans les themes xbootstrap");
-
 define('_MI_EXTCAL_MINICAL_SHOW_SAINT',"afficher le saint dans le minical");
 
 define('_MI_EXTCAL_HIGHSLIDE', 'Framework "highslide"');

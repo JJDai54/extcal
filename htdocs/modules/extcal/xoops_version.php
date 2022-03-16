@@ -36,9 +36,9 @@ setlocale(LC_TIME, $xoopsConfig['language']);
 //if (!defined('_EXT_TPL_EXTENSION')) define ('_EXT_TPL_EXTENSION', '.html');
                                 
 //***************************************************************************************
-$modversion['version']          = '2.81';
+$modversion['version']          = '2.82';
 $modversion['module_status']    = 'Beta 1';
-$modversion['release_date']     = '2020/03/02';
+$modversion['release_date']     = '2022/03/16';
 $modversion['name']             = _MI_EXTCAL_NAME;
 $modversion['description']      = _MI_EXTCAL_DESC;
 $modversion['credits']          = 'Zoullou, Mage, Mamba, JJDai (JJ Delalandre)';
@@ -788,14 +788,6 @@ $modversion['blocks'][$i]['options']     = '5|25|0';
 $modversion['blocks'][$i]['edit_func']   = 'bExtcalUpcomingByCategoryEdit';
 $modversion['blocks'][$i]['template']    = 'extcal_block_upcomingByCategory.tpl';
 
-++$i;
-$modversion['blocks'][$i]['file']        = 'category_menu_xbootstrap.php';
-$modversion['blocks'][$i]['name']        = _MI_EXTCAL_BNAME8;
-$modversion['blocks'][$i]['description'] = _MI_EXTCAL_BNAME8_DESC;
-$modversion['blocks'][$i]['show_func']   = 'bExtcalCategoryMenuShow';
-$modversion['blocks'][$i]['options']     = '';
-$modversion['blocks'][$i]['edit_func']   = 'bExtcalCategoryMenuEdit';
-$modversion['blocks'][$i]['template']    = 'extcal_block_category_menu_xbootstrap.tpl';
 //---------------------------------------------------------
 // Notifications
 $modversion['hasNotification']             = 1;

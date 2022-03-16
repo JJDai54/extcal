@@ -5,14 +5,13 @@ Compilator.CompileOnBackground=0
 Compilator.ProgSaveAll=0
 Compilator.ProgRunSelection=0
 Compilator.LogType=0
-DefaultDir=J:\_Contacts\Conseil Des Sages\Site Web\sages91.fr\web\modules\extcal
+DefaultDir=J:\Xoops\modules-JJD\extcal\Projet\htdocs\modules\extcal
 DefaultCP=0
 LogtoEnd=1
 DontOpen=0
 AbsolutePath=0
 FileFormat=0
 ProjectFilesOnly=0
-HTServer=localhost
 Extensions=*.*
 [Project tree]
 _extcal
@@ -91,9 +90,6 @@ _extcal
 					assets\images\horloges\horloge33.swf
 					assets\images\horloges\index.html
 				-icons
-					-32
-						assets\images\icons\32\index.html
-						assets\images\icons\32\location.png
 					assets\images\icons\addevent.gif
 					assets\images\icons\event-end.gif
 					assets\images\icons\event-middle.gif
@@ -114,53 +110,54 @@ _extcal
 				assets\images\right_both.gif
 				assets\images\trame.png
 			-js
+				assets\js\index.html
+			-js-old
 				-graphics
 					-outlines
-						assets\js\graphics\outlines\beveled.png
-						assets\js\graphics\outlines\drop-shadow.png
-						assets\js\graphics\outlines\glossy-dark.png
-						assets\js\graphics\outlines\outer-glow.png
-						assets\js\graphics\outlines\Outlines.psd
-						assets\js\graphics\outlines\rounded-black.png
-						assets\js\graphics\outlines\rounded-white.png
-					assets\js\graphics\close.png
-					assets\js\graphics\closeX.png
-					assets\js\graphics\controlbar2.gif
-					assets\js\graphics\controlbar3.gif
-					assets\js\graphics\controlbar4.gif
-					assets\js\graphics\controlbar4-hover.gif
-					assets\js\graphics\controlbar-black-border.gif
-					assets\js\graphics\controlbar-text-buttons.png
-					assets\js\graphics\controlbar-white.gif
-					assets\js\graphics\controlbar-white-small.gif
-					assets\js\graphics\fullexpand.gif
-					assets\js\graphics\geckodimmer.png
-					assets\js\graphics\icon.gif
-					assets\js\graphics\loader.gif
-					assets\js\graphics\loader.white.gif
-					assets\js\graphics\resize.gif
-					assets\js\graphics\scrollarrows.png
-					assets\js\graphics\zoomin.cur
-					assets\js\graphics\zoomout.cur
-				assets\js\extcal_highslide.js
-				assets\js\highslide.css
-				assets\js\highslide.js
-				assets\js\highslide.min.js
-				assets\js\highslide.packed.js
-				assets\js\highslide-full.js
-				assets\js\highslide-full.min.js
-				assets\js\highslide-full.packed.js
-				assets\js\highslide-ie6.css
-				assets\js\highslide-with-gallery.js
-				assets\js\highslide-with-gallery.min.js
-				assets\js\highslide-with-gallery.packed.js
-				assets\js\highslide-with-html.js
-				assets\js\highslide-with-html.min.js
-				assets\js\highslide-with-html.packed.js
+						assets\js-old\graphics\outlines\beveled.png
+						assets\js-old\graphics\outlines\drop-shadow.png
+						assets\js-old\graphics\outlines\glossy-dark.png
+						assets\js-old\graphics\outlines\outer-glow.png
+						assets\js-old\graphics\outlines\Outlines.psd
+						assets\js-old\graphics\outlines\rounded-black.png
+						assets\js-old\graphics\outlines\rounded-white.png
+					assets\js-old\graphics\close.png
+					assets\js-old\graphics\closeX.png
+					assets\js-old\graphics\controlbar2.gif
+					assets\js-old\graphics\controlbar3.gif
+					assets\js-old\graphics\controlbar4.gif
+					assets\js-old\graphics\controlbar4-hover.gif
+					assets\js-old\graphics\controlbar-black-border.gif
+					assets\js-old\graphics\controlbar-text-buttons.png
+					assets\js-old\graphics\controlbar-white.gif
+					assets\js-old\graphics\controlbar-white-small.gif
+					assets\js-old\graphics\fullexpand.gif
+					assets\js-old\graphics\geckodimmer.png
+					assets\js-old\graphics\icon.gif
+					assets\js-old\graphics\loader.gif
+					assets\js-old\graphics\loader.white.gif
+					assets\js-old\graphics\resize.gif
+					assets\js-old\graphics\scrollarrows.png
+					assets\js-old\graphics\zoomin.cur
+					assets\js-old\graphics\zoomout.cur
+				assets\js-old\extcal_highslide.js
+				assets\js-old\highslide.css
+				assets\js-old\highslide.js
+				assets\js-old\highslide.min.js
+				assets\js-old\highslide.packed.js
+				assets\js-old\highslide-full.js
+				assets\js-old\highslide-full.min.js
+				assets\js-old\highslide-full.packed.js
+				assets\js-old\highslide-ie6.css
+				assets\js-old\highslide-with-gallery.js
+				assets\js-old\highslide-with-gallery.min.js
+				assets\js-old\highslide-with-gallery.packed.js
+				assets\js-old\highslide-with-html.js
+				assets\js-old\highslide-with-html.min.js
+				assets\js-old\highslide-with-html.packed.js
 			assets\index.html
 		-blocks
 			blocks\category_events.php
-			blocks\category_menu_xbootstrap.php
 			blocks\day_events.php
 			blocks\index.html
 			blocks\minical.php
@@ -168,7 +165,7 @@ _extcal
 			blocks\random_events.php
 			blocks\spotlight_events.php
 			blocks\upcoming.php
-		+class
+		-class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -420,7 +417,8 @@ _extcal
 			class\TableForm.php
 			class\Time.php
 			class\Utility.php
-		+docs
+		-css
+		-docs
 			docs\changelog.txt
 			docs\credits.txt
 			docs\index.html
@@ -438,7 +436,7 @@ _extcal
 					images\fleches\vert\index.html
 				images\fleches\index.html
 			images\index.html
-		+include
+		-include
 			include\AC_RunActiveContent.js
 			include\admin.js
 			include\agenda_fnc.php
@@ -446,6 +444,7 @@ _extcal
 			include\common.php
 			include\config.php
 			include\constantes.php
+			include\convertTS.php
 			include\functions0.php
 			include\index.html
 			include\install_function.php
@@ -458,7 +457,6 @@ _extcal
 			include\style.css
 			include\ToolTips.js
 			include\update_function.php
-			include\convertTS.php
 		-language
 			-english
 				-help
@@ -477,7 +475,7 @@ _extcal
 				language\english\index.html
 				language\english\main.php
 				language\english\modinfo.php
-			+french
+			-french
 				-help
 					language\french\help\extcal_help.html
 					language\french\help\help.html
@@ -507,19 +505,17 @@ _extcal
 			sql\requetes2uninstall.sql
 			sql\x251_extcal_saints.sql
 		-templates
-			+admin
+			-admin
 				templates\admin\extcal_admin_cat_list.tpl
 				templates\admin\extcal_debug_info.tpl
 				templates\admin\index.html
-			+blocks
-				templates\blocks\extcal_block_category_menu_xbootstrap.tpl
+			-blocks
 				templates\blocks\extcal_block_day.tpl
 				templates\blocks\extcal_block_minical.tpl
 				templates\blocks\extcal_block_new.tpl
 				templates\blocks\extcal_block_random.tpl
 				templates\blocks\extcal_block_spotlight.tpl
 				templates\blocks\extcal_block_upcoming.tpl
-				templates\blocks\extcal_block_upcomingByCategory - Copie.tpl
 				templates\blocks\index.html
 				templates\blocks\test.tpl
 			templates\_extension_html_2_tpl.bat
@@ -643,6 +639,7 @@ _extcal
 						tests\modules\profile\admin\step.php
 						tests\modules\profile\admin\user.php
 						tests\modules\profile\admin\visibility.php
+					-assets
 					tests\modules\profile\activate.php
 					tests\modules\profile\changemail.php
 					tests\modules\profile\changepass.php
@@ -678,7 +675,7 @@ _extcal
 			tests\index.html
 			tests\readme.txt
 			tests\ViewEvent
-		+versions
+		-versions
 			versions\Extcal_2_04.php
 			versions\Extcal_2_15.php
 			versions\Extcal_2_21.php
@@ -726,136 +723,8 @@ _extcal
 		view_search.php
 		view_week.php
 		view_year.php
+		xoops_version.~php
 		xoops_version.php
 [Open project files]
-0=sql\mysql.sql
-1=templates\extcal_info_bulle.tpl
-2=print.php
-3=post.php
-4=versions\Extcal_2_28.php
-5=xoops_version.php
-6=templates\extcal_event.tpl
-7=class\EventHandler.php
-8=class\Event.php
-9=admin\event.php
-10=language\french\main.php
-11=templates\blocks\extcal_block_day.tpl
-12=templates\blocks\extcal_block_minical.tpl
-13=templates\blocks\extcal_block_new.tpl
-14=templates\blocks\extcal_block_random.tpl
-15=templates\blocks\extcal_block_spotlight.tpl
-16=templates\blocks\extcal_block_upcoming.tpl
-17=templates\blocks\extcal_block_upcomingByCategory - Copie.tpl
-18=templates\blocks\test.tpl
-19=templates\blocks\extcal_block_category_menu_xbootstrap.tpl
-20=assets\js\highslide.js
-21=location.php
-22=admin\permissions-new.php
-23=view_week.php
-24=templates\extcal_view_week.tpl
-25=templates\extcal_view_day.tpl
-26=templates\extcal_location_edit.tpl
-27=header.php
-28=include\functions0.php
-29=include\constantes.php
-30=language\french\modinfo.php
-31=assets\js\xoops_highslide.js
 [Selected Project Files]
 Main=
-Selected=templates\extcal_location_edit.tpl
-[sql\mysql.sql]
-TopLine=7
-Caret=22,19
-[templates\extcal_info_bulle.tpl]
-TopLine=11
-Caret=17,24
-[print.php]
-TopLine=85
-Caret=1,87
-[post.php]
-TopLine=61
-Caret=52,80
-[versions\Extcal_2_28.php]
-TopLine=29
-Caret=1,46
-[xoops_version.php]
-TopLine=400
-Caret=1,417
-[templates\extcal_event.tpl]
-TopLine=158
-Caret=1,158
-[class\EventHandler.php]
-TopLine=1325
-Caret=48,1325
-[class\Event.php]
-TopLine=29
-Caret=36,48
-[admin\event.php]
-TopLine=95
-Caret=63,111
-[language\french\main.php]
-TopLine=264
-Caret=40,276
-[templates\blocks\extcal_block_day.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\extcal_block_minical.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\extcal_block_new.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\extcal_block_random.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\extcal_block_spotlight.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\extcal_block_upcoming.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\extcal_block_upcomingByCategory - Copie.tpl]
-TopLine=1
-Caret=1,1
-[templates\blocks\test.tpl]
-TopLine=1
-Caret=1,34
-[templates\blocks\extcal_block_category_menu_xbootstrap.tpl]
-TopLine=1
-Caret=1,1
-[assets\js\highslide.js]
-TopLine=1458
-Caret=1,1470
-[location.php]
-TopLine=106
-Caret=22,123
-[admin\permissions-new.php]
-TopLine=23
-Caret=1,41
-[view_week.php]
-TopLine=155
-Caret=1,172
-[templates\extcal_view_week.tpl]
-TopLine=1
-Caret=1,10
-[templates\extcal_view_day.tpl]
-TopLine=1
-Caret=1,11
-[templates\extcal_location_edit.tpl]
-TopLine=1
-Caret=1,8
-[header.php]
-TopLine=1
-Caret=1,1
-[include\functions0.php]
-TopLine=677
-Caret=1,694
-[include\constantes.php]
-TopLine=20
-Caret=3,37
-[language\french\modinfo.php]
-TopLine=195
-Caret=1,212
-[assets\js\xoops_highslide.js]
-TopLine=1
-Caret=47,4
