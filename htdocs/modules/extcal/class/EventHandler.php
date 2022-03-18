@@ -95,14 +95,14 @@ class EventHandler extends ExtcalPersistableObjectHandler
         $event = $this->get($eventId);
 
 
-// ***************** verif JJDai ****************************************
+/* ***************** verif JJDai ****************************************
 include_once(XOOPS_ROOT_PATH . '/Frameworks/JJD/include/WhatDoYouWantToDo.php');
 sanityse_whatDoYouWantToDoA($data,
                            $nomTable = 'event',
                            $nomChamp = array('event_desc','event_address'),
                            $idFiche = $eventId,
                            $commentaire = '');
-// ***************************************************************
+ *************************************************************** */
 
 
 

@@ -279,14 +279,14 @@ public function saveLocation($siteSide, $data){
 */
 // ext_echo($data);
 // exit;
-// ***************** verif JJDai ****************************************
+/* ***************** verif JJDai ****************************************
 include_once(XOOPS_ROOT_PATH . '/Frameworks/JJD/include/WhatDoYouWantToDo.php');
 sanityse_whatDoYouWantToDoA($data,
                            $nomTable = 'location',
                            $nomChamp = array('description','horaires'),
                            $idFiche = $data['location_id'],
                            $commentaire = '');
-// ***************************************************************
+*************************************************************** */
 
         $obj->setVar('nom', $data['nom']);
         $obj->setVar('description', $data['description']);
