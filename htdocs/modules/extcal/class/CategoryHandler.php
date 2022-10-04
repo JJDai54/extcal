@@ -168,7 +168,8 @@ class CategoryHandler extends ExtcalPersistableObjectHandler
     public function getAllCatArray($user, $perm = 'extcal_cat_view')
     {
     global $allCatsAllowed;
-        if (count($allCatsAllowed) > 0) return $allCatsAllowed; // JJDai a remplcer par null serait plus judicieux
+        if (!is_null($allCatsAllowed))
+            if (count($allCatsAllowed) > 0) return $allCatsAllowed; // JJDai a remplcer par null serait plus judicieux
         //----------------------------------------------
         $catsArray = $this->objectToArray($this->getAllCat($user, $perm));
         $catsKey = array();

@@ -430,11 +430,12 @@ if ($bEcho){
 global $xoopsUser, $catHandler;
 if (!isset($catHandler))    $catHandler      = \XoopsModules\Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
 $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
-
         //        while (list($k, $v) = each($criteres)) {
         foreach ($criteres as $k => $v) {
             ${$k} = $v;
         }
+
+        if (!isset($cat)) $cat = 0;
  
 //echo "<hr>periode : {$periode}<pre>" . print_r($criteres ,true). "</pre><hr>"; //JJDai
         //---------------------------------------------
@@ -493,10 +494,12 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
         $criteriaCompo->add(new \Criteria('event_isrecur', 0, '='));
 
         
-        if (!isset($cat)) $cat = 0;
-        if ($cat > 0 && !array_key_exists($cat, $allCatsAllowed)) $cat = 0;
+        // ($cat > 0 && !array_key_exists($cat, $allCatsAllowed)) $cat = 0;
         
         if ($cat > 0) {
+            //if (!array_key_exists($cat, $allCatsAllowed)) $cat = 0;
+            //echo "<hr>cat = {$cat}<hr>";
+            if (!isset($allCatsAllowed[$cat])) $cat = 0;
           $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
         }elseif(count($allCatsAllowed) > 0) {
             $catIds = implode(',', array_keys($allCatsAllowed));

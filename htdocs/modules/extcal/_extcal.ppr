@@ -17,7 +17,7 @@ Extensions=*.*
 [Project tree]
 _extcal
 	+extcal
-		-admin
+		+admin
 			admin\about.php
 			admin\admin_footer.php
 			admin\admin_header.php
@@ -166,7 +166,7 @@ _extcal
 			blocks\random_events.php
 			blocks\spotlight_events.php
 			blocks\upcoming.php
-		-class
+		+class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -498,7 +498,7 @@ _extcal
 			preloads\autoloader.php
 			preloads\core.php
 			preloads\index.html
-		-sql
+		+sql
 			sql\extcal_2.40_migrate.yml
 			sql\index.html
 			sql\mysql.sql
@@ -727,18 +727,50 @@ _extcal
 		xoops_version.~php
 		xoops_version.php
 [Open project files]
-0=Nouveau1.txt
-1=class\EventHandler.php
-2=class\LocationHandler.php
+0=class\EventHandler.php
+1=class\LocationHandler.php
+2=sql\mysql.sql
+3=class\Eventmember.php
+4=admin\event.php
+5=..\..\..\..\..\..\..\zzz\larussa.php
+6=admin\admin_header.php
+7=header.php
+8=class\CategoryHandler.php
+9=blocks\minical.php
+10=blocks\upcoming.php
 [Selected Project Files]
 Main=
-Selected=class\LocationHandler.php
-[Nouveau1.txt]
+Selected=class\EventHandler.php
+[class\EventHandler.php]
+TopLine=428
+Caret=1,437
+[class\LocationHandler.php]
+TopLine=276
+Caret=39,294
+[sql\mysql.sql]
+TopLine=1
+Caret=22,13
+[class\Eventmember.php]
 TopLine=1
 Caret=1,1
-[class\EventHandler.php]
-TopLine=82
-Caret=26,110
-[class\LocationHandler.php]
-TopLine=266
-Caret=39,294
+[admin\event.php]
+TopLine=1
+Caret=30,25
+[..\..\..\..\..\..\..\zzz\larussa.php]
+TopLine=9
+Caret=1,37
+[admin\admin_header.php]
+TopLine=3
+Caret=1,1
+[header.php]
+TopLine=38
+Caret=1,59
+[class\CategoryHandler.php]
+TopLine=158
+Caret=39,171
+[blocks\minical.php]
+TopLine=111
+Caret=44,131
+[blocks\upcoming.php]
+TopLine=73
+Caret=1,93
