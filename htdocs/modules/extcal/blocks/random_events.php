@@ -30,8 +30,8 @@ function bExtcalRandomShow($options)
 {
     //    // require_once  dirname(__DIR__) . '/class/Config.php';
 
-    /** @var Extcal\Helper $helper */
-    $helper = \XoopsModules\Extcal\Helper::getInstance();
+    /** @var Extcal\Helper $extcalHelper */
+    $extcalHelper = \XoopsModules\Extcal\Helper::getInstance();
 
     $eventHandler = \XoopsModules\Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);
 
@@ -47,7 +47,7 @@ function bExtcalRandomShow($options)
 
     $events = $eventHandler->objectToArray($eventHandler->getRandomEvent($nbEvent, $options));
     $eventHandler->serverTimeToUserTimes($events);
-    $eventHandler->formatEventsDate($events, $helper->getConfig('event_date_month'));
+    $eventHandler->formatEventsDate($events, $extcalHelper->getConfig('event_date_month'));
 
     return $events;
 }

@@ -33,15 +33,14 @@ switch ($op) {
 // XMF TableLoad for SAMPLE data
 
 function loadSampleData()
-{
+{global $extcalHelper;
     $moduleDirName = basename(dirname(__DIR__));
-    $helper        = Extcal\Helper::getInstance();
     $utility       = new Extcal\Utility();
     $configurator  = new Common\Configurator();
     // Load language files
-    $helper->loadLanguage('admin');
-    $helper->loadLanguage('modinfo');
-    $helper->loadLanguage('common');
+    $extcalHelper->loadLanguage('admin');
+    $extcalHelper->loadLanguage('modinfo');
+    $extcalHelper->loadLanguage('common');
 
     //    $items = \Xmf\Yaml::readWrapped('quotes_data.yml');
     //    \Xmf\Database\TableLoad::truncateTable($moduleDirName . '_quotes');

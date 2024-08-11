@@ -13,6 +13,9 @@ use XoopsModules\Extcal;
  *
  * @return mixed
  */
+//echo "===>" .  __FILE__ . "<br>";
+
+
 function extcal_search($queryarray, $andor, $limit, $offset, $userid)
 {
     global $xoopsUser;

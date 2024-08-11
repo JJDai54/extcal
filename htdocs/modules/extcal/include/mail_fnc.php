@@ -21,6 +21,8 @@
  **/
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(dirname(__DIR__))) . '/class/uploader.php';
 require_once dirname(dirname(dirname(__DIR__))) . '/class/mail/phpmailer/class.phpmailer.php'; // First we require_once the PHPMailer libary in our script

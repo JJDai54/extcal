@@ -10,6 +10,8 @@ use XoopsModules\Extcal;
  *
  * @return mixed
  */
+//echo "===>" .  __FILE__ . "<br>";
+
 function extcal_notify_iteminfo($category, $itemId)
 {
     if ('global' === $category || 'cat' === $category) {

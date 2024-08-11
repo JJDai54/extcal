@@ -21,6 +21,8 @@
  **/
  require_once dirname(__DIR__) . '/preloads/autoloader.php';
 //include_once ("../../mainfile.php");
+//echo "===>" .  __FILE__ . "<br>";
+
 include_once ("functions0.php");
 use XoopsModules\Extcal;
 // defined('XOOPS_ROOT_PATH') || die('Restricted access');
@@ -68,15 +70,10 @@ if (is_object($xoopsModule)) {
     $name = $xoopsModule->getVar('name');
 }
 
-/** @var \XoopsModuleHandler $moduleHandler */
-$moduleHandler = xoops_getHandler('module');
-$module        = $moduleHandler->getByDirname('extcal');
-$extcal_mid = $module->getVar('mid');
 
 
-/** @var \XoopsModules\Extcal\Config $extcalConfig */
-$helper = Extcal\Helper::getInstance();
-  define('_EXTCAL_SHOW_TPL_NAME', $helper->getConfig('displayTemplateName'));
+  //define('_EXTCAL_SHOW_TPL_NAME', $extcalHelper->getConfig('displayTemplateName'));
+  define('_EXTCAL_SHOW_TPL_NAME', 0);
 
 //////////////////////////////////
 

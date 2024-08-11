@@ -1,6 +1,14 @@
 <{if $smarty.const._EXTCAL_SHOW_TPL_NAME==1}>
 <div style="text-align: center; background-color: black;"><span style="color: yellow;">Template : <{$smarty.template}></span></div>
 <{/if}>
+
+<div id='div_to_mask_title' name='div_to_mask_title' style='display:none;'></div>
+<script>
+jQuery(document).ready(function(){
+      $("#div_to_mask_title").parent().children('h4:first').html('');
+});
+</script>
+
 <style>
 table {
   border-collapse: collapse;
@@ -11,7 +19,8 @@ table, th, td {
   border: 1px solid black;
 }
 </style>
-<table class="outer" <{if $block.bgColor !=''}>bgcolor='<{$block.bgColor}>'<{/if}>
+
+<table  id='extcal_minical' name='extcal_minical' class="outer" <{if $block.bgColor !=''}>bgcolor='<{$block.bgColor}>'<{/if}>
        style="width:100%; text-align:center; vertical-align:middle;">
     <{if $block.horloge.display}>
         <tr>
@@ -48,7 +57,11 @@ table, th, td {
             </td>
         </tr>
     <{/if}>
-
+    
+    <h4 class="block-title"><a href="<{$xoops_url}>/modules/extcal/<{$block.navig.page}>?<{$block.navig.uri}>"><{$smarty.const._MB_EXTCAL_VIEW_PLANNING}>
+        &nbsp;<img border="0" src="<{$smarty.const.XOOPS_URL}>/modules/extcal/assets/images/fleches/vert/fleche-droite.png" height="15px"></a>
+    </h4>
+                                                                                                                                                                                 
     <{if $block.displayLink == 1}>
         <tr>
             <td colspan="7">
@@ -87,3 +100,10 @@ table, th, td {
 <{if $block.saint.show == 1}>
   <div width="100%"><{$block.saint.name}></div>
 <{/if}>
+
+
+
+
+
+
+  

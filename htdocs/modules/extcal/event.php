@@ -18,6 +18,8 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';

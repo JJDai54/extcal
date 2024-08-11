@@ -1,12 +1,11 @@
 <?php
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';
-
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
 
 $params                                  = ['view' => _EXTCAL_NAV_MONTH, 'file' => _EXTCAL_FILE_MONTH];
 $GLOBALS['xoopsOption']['template_main'] = "extcal_view_{$params['view']}.tpl";
@@ -17,7 +16,7 @@ get_params_YMDC($year, $month, $day, $cat);
 /* ========================================================================== */
 /*
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
-$form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
+$form->addElement(getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
 $form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
 $form->addElement(new \XoopsFormButton('', '', _SUBMIT, 'submit'));
@@ -43,7 +42,7 @@ $events   = $eventHandler->getEventsOnPeriode($criteres);
 $eventsArray = $events;
 //ext_echo($eventsArray);
 // Formating date
-//$eventHandler->formatEventsDate($events, $helper->getConfig('event_date_year'));
+//$eventHandler->formatEventsDate($events, $extcalHelper->getConfig('event_date_year'));
 
 // Treatment for recurring event
 $startMonth = mktime(0, 0, 0, $month, 1, $year);
@@ -63,15 +62,15 @@ $nMonthCalObj = $monthCalObj->nextMonth('object');
 $navig        = [
     'prev' => [
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $pMonthCalObj->thisYear(), $pMonthCalObj->thisMonth(), 1, $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_month'), $pMonthCalObj->getTimestamp()),
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_month'), $pMonthCalObj->getTimestamp()),
     ],
     'this' => [
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $monthCalObj->thisYear(), $monthCalObj->thisMonth(), 1, $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_month'), $monthCalObj->getTimestamp()),
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_month'), $monthCalObj->getTimestamp()),
     ],
     'next' => [
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $nMonthCalObj->thisYear(), $nMonthCalObj->thisMonth(), 1, $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_month'), $nMonthCalObj->getTimestamp()),
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_month'), $nMonthCalObj->getTimestamp()),
     ],
 ];
 
@@ -82,8 +81,8 @@ $xoopsTpl->assign('xoops_pagetitle', $xoopsModule->getVar('name') . ' ' . $navig
 $xoopsTpl->assign('navig', $navig);
 
 //Display tooltip
-$xoopsTpl->assign('showInfoBulle', $helper->getConfig('showInfoBulle'));
-$xoopsTpl->assign('showId', $helper->getConfig('showId'));
+$xoopsTpl->assign('showInfoBulle', $extcalHelper->getConfig('showInfoBulle'));
+$xoopsTpl->assign('showId', $extcalHelper->getConfig('showId'));
 
 // Assigning current form navig data to the template
 $xoopsTpl->assign('selectedCat', $cat);
@@ -94,7 +93,7 @@ $xoopsTpl->assign('params', $params);
 
 $tNavBar = getNavBarTabs($params['view']);
 $xoopsTpl->assign('tNavBar', $tNavBar);
-$xoopsTpl->assign('list_position', $helper->getConfig('list_position'));
+$xoopsTpl->assign('list_position', $extcalHelper->getConfig('list_position'));
 // echoArray($tNavBar,true);
 
 //---------------------------------------------------------------

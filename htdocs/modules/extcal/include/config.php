@@ -16,6 +16,8 @@
  * @since
  * @author       XOOPS Development Team,
  */
+//echo "===>" .  __FILE__ . "<br>";
+
 function getConfig()
 {
     $moduleDirName      = basename(dirname(__DIR__));

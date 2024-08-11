@@ -18,6 +18,7 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
 
 /**
  * Prepares system prior to attempting to install module

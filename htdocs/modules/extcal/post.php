@@ -18,11 +18,11 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 
-/** @var Extcal\Helper $helper */
-$helper                                  = Extcal\Helper::getInstance();
 $GLOBALS['xoopsOption']['template_main'] = 'extcal_post.tpl';
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
@@ -74,7 +74,7 @@ if (\Xmf\Request::hasVar('form_preview', 'POST')) {
         'event_start'        => $_POST['event_start'],
         'have_end'           => $_POST['have_end'],
         'event_end'          => $_POST['event_end'],
-        'dohtml'             => (int)$helper->getConfig('allow_html'),
+        'dohtml'             => (int)$extcalHelper->getConfig('allow_html'),
         'event_price'        => $_POST['event_price'],
         'event_organisateur' => $_POST['event_organisateur'],
         'event_alert'        => $_POST['event_alert'],
@@ -90,7 +90,7 @@ if (\Xmf\Request::hasVar('form_preview', 'POST')) {
     $event = $eventHandler->objectToArray($event, ['cat_id'], 'p');
 
     // Adding formated date for start and end event
-    $eventHandler->formatEventDate($event, $helper->getConfig('event_date_event'));
+    $eventHandler->formatEventDate($event, $extcalHelper->getConfig('event_date_event'));
 
     // Assigning event to the template
     $xoopsTpl->assign('event', $event);
@@ -163,7 +163,7 @@ if (\Xmf\Request::hasVar('form_preview', 'POST')) {
         'event_picture2'     => @$event_picture2,
         'event_price'        => @$_POST['event_price'],
         'location_id'     => $_POST['location_id'],
-        'dohtml'             => $helper->getConfig('allow_html'),
+        'dohtml'             => $extcalHelper->getConfig('allow_html'),
         'event_icone'        => $_POST['event_icone'],
     ];
 

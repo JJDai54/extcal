@@ -20,8 +20,8 @@ function isUpToDate()
     return $GLOBALS['xoopsModule']->getVar('version') >= $version;
 }
 
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
+/** @var Extcal\Helper $extcalHelper */
+$extcalHelper = Extcal\Helper::getInstance();
 
 $op  = \Xmf\Request::getCmd('op', 'default');
 $fct = \Xmf\Request::getString('fct', 'default', 'GET');
@@ -61,8 +61,8 @@ switch ($op) {
                 $tag = [
                     'EV_CAT'   => $cat->getVar('cat_name'),
                     'EV_TITLE' => $event->getVar('event_title'),
-                    'EV_START' => $extcalTime->getFormatedDate($helper->getConfig('date_long'), $event->getVar('event_start')),
-                    'EV_END'   => $extcalTime->getFormatedDate($helper->getConfig('date_long'), $event->getVar('event_end')),
+                    'EV_START' => $extcalTime->getFormatedDate($extcalHelper->getConfig('date_long'), $event->getVar('event_start')),
+                    'EV_END'   => $extcalTime->getFormatedDate($extcalHelper->getConfig('date_long'), $event->getVar('event_end')),
                     'EV_LINK'  => XOOPS_URL . '/modules/extcal/event.php?event=' . $event->getVar('event_id'),
                 ];
                 $xoopsMailer->assign($tag);

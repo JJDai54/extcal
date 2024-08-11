@@ -5,6 +5,9 @@
  *
  * @return bool
  */
+ 
+//echo "===>" .  __FILE__ . "<br>";
+ 
 function xoops_module_install_extcal(\XoopsModule $xoopsModule)
 {
     // Create eXtCal upload directory

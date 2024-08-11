@@ -18,15 +18,13 @@
  */
 
 use XoopsModules\Extcal;
-$helper = Extcal\Helper::getInstance();
+//echo "===>" .  __FILE__ . "<br>";
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';
 $params                                  = ['view' => _EXTCAL_NAV_YEAR, 'file' => _EXTCAL_FILE_YEAR];
 $GLOBALS['xoopsOption']['template_main'] = "extcal_view_{$params['view']}.tpl";
 require_once __DIR__ . '/header.php';
-
-/** @var Extcal\Helper $helper */
 
 /* ========================================================================== */
 $year = \Xmf\Request::getInt('year', date('Y'), 'GET');
@@ -43,7 +41,7 @@ $xoTheme->addStylesheet('modules/extcal/assets/css/infobulle.css');
 
 /*
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
-$form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
+$form->addElement(getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after')));
 
 $form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
 $form->addElement(new \XoopsFormButton('', 'form_submit', _SUBMIT, 'submit'));
@@ -67,7 +65,7 @@ $events   = $eventHandler->getEventsOnPeriode($criteres);
 /**********************************************************************/
 $eventsArray = $events;
 // Formating date
-// $eventHandler->formatEventsDate($events, $helper->getConfig('event_date_year'));
+// $eventHandler->formatEventsDate($events, $extcalHelper->getConfig('event_date_year'));
 //
 // // Treatment for recurring event
 // $startYear = mktime(0, 0, 0, 1, 1, $year);
@@ -77,12 +75,12 @@ $eventsArray = $events;
 // foreach ($events as $event) {
 //     if (!$event['event_isrecur']) {
 //         // Formating date
-//         $eventHandler->formatEventDate($event, $helper->getConfig('event_date_week'));
+//         $eventHandler->formatEventDate($event, $extcalHelper->getConfig('event_date_week'));
 //         $eventsArray[] = $event;
 //     } else {
 //         $recurEvents = $eventHandler->getRecurEventToDisplay($event, $startYear, $endYear);
 //         // Formating date
-//         $eventHandler->formatEventsDate($recurEvents, $helper->getConfig('event_date_week'));
+//         $eventHandler->formatEventsDate($recurEvents, $extcalHelper->getConfig('event_date_week'));
 //         $eventsArray = array_merge($eventsArray, $recurEvents);
 //     }
 // }
@@ -127,8 +125,8 @@ $xoopsTpl->assign('xoops_pagetitle', $xoopsModule->getVar('name') . ' ' . $navig
 $xoopsTpl->assign('navig', $navig);
 
 //Display tooltip
-$xoopsTpl->assign('showInfoBulle', $helper->getConfig('showInfoBulle'));
-$xoopsTpl->assign('showId', $helper->getConfig('showId'));
+$xoopsTpl->assign('showInfoBulle', $extcalHelper->getConfig('showInfoBulle'));
+$xoopsTpl->assign('showId', $extcalHelper->getConfig('showId'));
 
 // Assigning current form navig data to the template
 $xoopsTpl->assign('selectedCat', $cat);
@@ -137,7 +135,7 @@ $xoopsTpl->assign('params', $params);
 
 $tNavBar = getNavBarTabs($params['view']);
 $xoopsTpl->assign('tNavBar', $tNavBar);
-$xoopsTpl->assign('list_position', $helper->getConfig('list_position'));
+$xoopsTpl->assign('list_position', $extcalHelper->getConfig('list_position'));
 // echoArray($tNavBar,true);
 
 //---------------------------------------------------------------
@@ -159,18 +157,18 @@ if ($xoopsUser) {
     $xoopsTpl->assign('canEdit', false);
 }
 
-$xoopsTpl->assign('css_extcal', $helper->getConfig('css_extcal'));   
-$xoopsTpl->assign('tdb_rgb', toRGB( $helper->getConfig('tdb_rgb')));   
-$xoopsTpl->assign('trb_rgb', toRGB( $helper->getConfig('trb_rgb')));
+$xoopsTpl->assign('css_extcal', $extcalHelper->getConfig('css_extcal'));   
+$xoopsTpl->assign('tdb_rgb', toRGB( $extcalHelper->getConfig('tdb_rgb')));   
+$xoopsTpl->assign('trb_rgb', toRGB( $extcalHelper->getConfig('trb_rgb')));
 /**
  <{if $smarty.const._EXTCAL_SHOW_TPL_NAME==1}>
 <div style="text-align: center; background-color: black;"><span style="color: yellow;">Template : <{$smarty.template}></span></div>
 <{/if}>
 <{include file="db:extcal_view_calendar_style-01.tpl"}>
 
-$xoopsTpl->assign('css_extcal', $helper->getConfig('css_extcal'));   
-$xoopsTpl->assign('tdb_rgb', toRGB( $helper->getConfig('tdb_rgb')));   
-$xoopsTpl->assign('trb_rgb', toRGB( $helper->getConfig('trb_rgb')));
+$xoopsTpl->assign('css_extcal', $extcalHelper->getConfig('css_extcal'));   
+$xoopsTpl->assign('tdb_rgb', toRGB( $extcalHelper->getConfig('tdb_rgb')));   
+$xoopsTpl->assign('trb_rgb', toRGB( $extcalHelper->getConfig('trb_rgb')));
 
 */
 //mb missing for xBootstrap templates by Angelo

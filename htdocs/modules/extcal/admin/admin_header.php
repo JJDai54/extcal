@@ -27,8 +27,7 @@ require_once dirname(__DIR__) . '/preloads/autoloader.php';
 
 $moduleDirName = basename(dirname(__DIR__));
 
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
+/** @var Extcal\Helper $extcalHelper */
 /** @var Xmf\Module\Admin $adminObject */
 //$adminObject = \Xmf\Module\Admin::getInstance();
 $utility     = new Extcal\Utility();
@@ -37,16 +36,17 @@ $utility     = new Extcal\Utility();
 require_once dirname(__DIR__) . '/include/common.php';
 
 $adminObject = \Xmf\Module\Admin::getInstance();
+$extcalHelper = Extcal\Helper::getInstance();
 
 $pathIcon16    = \Xmf\Module\Admin::iconUrl('', 16);
 $pathIcon32    = \Xmf\Module\Admin::iconUrl('', 32);
-$pathModIcon32 = $helper->getModule()->getInfo('modicons32');
+$pathModIcon32 = $extcalHelper->getModule()->getInfo('modicons32');
 
 // Load language files
-$helper->loadLanguage('admin');
-$helper->loadLanguage('modinfo');
-$helper->loadLanguage('main');
-$helper->loadLanguage('common');
+$extcalHelper->loadLanguage('admin');
+$extcalHelper->loadLanguage('modinfo');
+$extcalHelper->loadLanguage('main');
+$extcalHelper->loadLanguage('common');
 
 $myts = \MyTextSanitizer::getInstance();
 
@@ -63,3 +63,7 @@ $eventHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);
 /** @var Extcal\EventmemberHandler $eventMemberHandler */
 $eventMemberHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_MEMBER);
 //xoops_cp_header();
+
+$allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
+
+//echo "<hr><pre>allCatsAllowed" . print_r($allCatsAllowed, true) . "</pre><hr>";

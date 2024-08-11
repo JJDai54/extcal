@@ -18,14 +18,17 @@
  */
 
 use XoopsModules\Extcal;
+echo "===>" .  __FILE__ . "<br>";
+
 
 require_once XOOPS_ROOT_PATH . '/header.php';
-
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-
 require_once __DIR__ . '/include/agenda_fnc.php';
 
-Extcal\Helper::getInstance()->loadLanguage('modinfo');
+$extcalHelper = Extcal\Helper::getInstance();
+
+//Extcal\Helper::getInstance()->loadLanguage('modinfo');
+$extcalHelper->loadLanguage('modinfo');
 
 //------------------------------------------------------
 require_once _EXTCAL_PEAR_CALENDAR_ROOT . '/Util/Textual.php';
@@ -46,7 +49,6 @@ $xoopsUser    = $xoopsUser ?: null;
 //$allCatsAllowed = $catHandler->objectToArray($catHandler->getAllCat($xoopsUser));
 //JJDai declarer comme global dans les fonction qui l'utilise, il faudrait je pense le passer en parametre
 $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
-//ext_echo ($allCatsAllowed,"===> Header");
 //------------------------------------------------------
 
 // Tooltips include

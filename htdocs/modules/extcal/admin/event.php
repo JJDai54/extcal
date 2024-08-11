@@ -26,9 +26,9 @@ require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
 require_once __DIR__ . '/admin_header.php';
 require_once  '../include/functions0.php';
 // require_once  dirname(__DIR__) . '/class/Utility.php';
-
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
+ 
+/** @var Extcal\Helper $extcalHelper */
+$extcalHelper = Extcal\Helper::getInstance();
 
 $gepeto = array_merge($_GET, $_POST);
 //while (list($k, $v) = each($gepeto)) {
@@ -349,7 +349,7 @@ switch ($op) {
         $extcalConfig = Extcal\Config::getHandler();
 
         $start          = \Xmf\Request::getInt('start', 0, 'GET');
-        $nbEventsByPage = $helper->getConfig('nbEventsByPage');
+        $nbEventsByPage = $extcalHelper->getConfig('nbEventsByPage');
 
         xoops_cp_header();
         // @author      Gregory Mage (Aka Mage)

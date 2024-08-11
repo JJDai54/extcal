@@ -1,6 +1,8 @@
 <?php
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 
@@ -17,10 +19,6 @@ exit;
     [event] => 3
 
 */
-
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
-
 $event_id   = $_POST['event'];
 $member_uid = $xoopsUser->getVar('uid');
 
@@ -28,7 +26,7 @@ if (!$GLOBALS['xoopsSecurity']->check()) {
     redirect_header('index.php', 3, _NOPERM . '<br>' . implode('<br>', $GLOBALS['xoopsSecurity']->getErrors()));
 }
 
-if ($xoopsUser && $helper->getConfig('whosnot_going')) {
+if ($xoopsUser && $extcalHelper->getConfig('whosnot_going')) {
     // If param are right
     if (\Xmf\Request::getInt('event', 0, 'POST') > 0 && ('add' === $_POST['mode'] || 'remove' === $_POST['mode'])) {
         $eventHandler          = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);

@@ -196,33 +196,33 @@ class Utility
      * @param        $cat
      * @return array
      */
-    public static function getCheckeCategories($name = 'cat', $cat)
-    {
-        global $xoopsUser;
-        // Category selectbox
-        //<option style="background-color:#00FFFF;">VARCHAR</option>
-
-        $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
-        $catsList   = $catHandler->getAllCat($xoopsUser);
-
-        $t = [];
-        foreach ($catsList as $catList) {
-            $cat_id    = $catList->getVar('cat_id');
-            $name      = $catList->getVar('cat_name');
-            $cat_color = $catList->getVar('cat_color');
-            $checked   = in_array($cat_id, $cat, true) ? 'checked' : '';
-            $cat       = ''
-                         . "<div style='float:left; margin-left:5px;'>"
-                         . "<input type='checkbox' name='{$name}[{$cat_id}]' value='1' {$checked}>"
-                         . "<div style='absolute:left;height:12px; width:6px; background-color:#{$cat_color}; border:1px solid black; float:left; margin-right:5px;' ></div>"
-                         . " {$name}"
-                         . '</div>';
-
-            $t[] = $cat;
-        }
-
-        return $t;
-    }
+//     public static function getCheckeCategories($name = 'cat', $cat = null)
+//     {
+//         global $xoopsUser;
+//         // Category selectbox
+//         //<option style="background-color:#00FFFF;">VARCHAR</option>
+// 
+//         $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
+//         $catsList   = $catHandler->getAllCat($xoopsUser);
+// 
+//         $t = [];
+//         foreach ($catsList as $catList) {
+//             $cat_id    = $catList->getVar('cat_id');
+//             $name      = $catList->getVar('cat_name');
+//             $cat_color = $catList->getVar('cat_color');
+//             $checked   = in_array($cat_id, $cat, true) ? 'checked' : '';
+//             $cat       = ''
+//                          . "<div style='float:left; margin-left:5px;'>"
+//                          . "<input type='checkbox' name='{$name}[{$cat_id}]' value='1' {$checked}>"
+//                          . "<div style='absolute:left;height:12px; width:6px; background-color:#{$cat_color}; border:1px solid black; float:left; margin-right:5px;' ></div>"
+//                          . " {$name}"
+//                          . '</div>';
+// 
+//             $t[] = $cat;
+//         }
+// 
+//         return $t;
+//     }
 
     /*******************************************************************
      *
@@ -233,7 +233,7 @@ class Utility
      * @param bool   $addNone
      * @return \XoopsFormSelect
      */
-    public static function getListOrderBy($name = 'orderby', $caption = '', $defaut, $addNone = false)
+    public static function getListOrderBy($name = 'orderby', $caption = '', $defaut = null, $addNone = false)
     {
         global $xoopsUser;
 
@@ -265,7 +265,7 @@ class Utility
      * @param        $defaut
      * @return \XoopsFormSelect
      */
-    public static function getListAndOr($name = 'andor', $caption = '', $defaut)
+    public static function getListAndOr($name, $caption, $defaut)
     {
         global $xoopsUser;
 

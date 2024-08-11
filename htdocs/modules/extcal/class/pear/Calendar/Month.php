@@ -72,6 +72,7 @@ require_once CALENDAR_ROOT . 'Calendar.php';
  */
 class Calendar_Month extends Calendar
 {
+var $firstDay = 0;
     /**
      * Constructs Calendar_Month.
      *

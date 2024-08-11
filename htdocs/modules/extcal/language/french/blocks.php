@@ -33,6 +33,7 @@ define('_MB_EXTCAL_LOCALISATION',"fr_FR");
 define('_MB_EXTCAL_FESTE_OF_DAY',"Fête(s) du jour :");
 
 define('_MB_EXTCAL_PLANNING', "Planning");
+define('_MB_EXTCAL_VIEW_PLANNING', "Voir le planning");
 define('_MB_EXTCAL_VIEW_MONTH', "Calendrier mensuel");
 define('_MB_EXTCAL_SEARCH_EVENT', "Rechercher un événement");
 define('_MB_EXTCAL_VIEW_MONTH_LIST', "Liste mensuelle");

@@ -28,8 +28,8 @@ require_once XOOPS_ROOT_PATH . '/header.php';
 // require_once  dirname(__DIR__) . '/class/Utility.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
+/** @var Extcal\Helper $extcalHelper */
+$extcalHelper = Extcal\Helper::getInstance();
 
 $gepeto = array_merge($_GET, $_POST);
 //while (list($k, $v) = each($gepeto)) {
@@ -71,6 +71,10 @@ global $module_id, $xoopsModule, $index_admin, $catHandler, $xoopsUser;
  **********************************************************/
 function extcal_getPerm($perm_name){
 global $module_id, $xoopsModule, $index_admin, $catHandler, $extcal_mid;
+/** @var \XoopsModuleHandler $moduleHandler */
+$moduleHandler = xoops_getHandler('module');
+$module        = $moduleHandler->getByDirname('extcal');
+$extcal_mid = $module->getVar('mid');
 
   switch($perm_name){
       case 'extcal_cat_submit':

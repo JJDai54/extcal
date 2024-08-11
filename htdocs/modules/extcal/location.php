@@ -18,12 +18,12 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';
 $GLOBALS['xoopsOption']['template_main'] = 'extcal_location.tpl';
 require_once __DIR__ . '/header.php';
-
-$helper = Extcal\Helper::getInstance();
 
 $locationHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_LOCATION);
 //require_once XOOPS_ROOT_PATH.'/header.php';

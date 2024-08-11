@@ -31,8 +31,8 @@ function bExtcalUpcomingShow($options)
 {
     //    // require_once  dirname(__DIR__) . '/class/Config.php';
 
-    /** @var Extcal\Helper $helper */
-    $helper = \XoopsModules\Extcal\Helper::getInstance();
+    /** @var Extcal\Helper $extcalHelper */
+    $extcalHelper = \XoopsModules\Extcal\Helper::getInstance();
 /*
 */
 global $xoTheme;
@@ -63,11 +63,11 @@ $xoTheme->addStylesheet('modules/extcal/assets/css/infobulle.css');
     // Validate the date (day, month and year)
     $dayTS = mktime(0, 0, 0, $month, $day, $year);
 
-    //$offset = $helper->getConfig('week_start_day') - date('w', $dayTS);
+    //$offset = $extcalHelper->getConfig('week_start_day') - date('w', $dayTS);
 
     //------- mb --------------
     //   let's make sure that the upcoming events start tomorrow
-    //    $offset = date('w', $dayTS) + 7-$helper->getConfig('week_start_day')<7 ? date('w', $dayTS) + 7-$helper->getConfig('week_start_day') : 0;
+    //    $offset = date('w', $dayTS) + 7-$extcalHelper->getConfig('week_start_day')<7 ? date('w', $dayTS) + 7-$extcalHelper->getConfig('week_start_day') : 0;
     //    $dayTS = $dayTS - ($offset * _EXTCAL_TS_DAY);
 
     $dayTS += _EXTCAL_TS_DAY;
@@ -95,7 +95,7 @@ $xoTheme->addStylesheet('modules/extcal/assets/css/infobulle.css');
     //----------------------------
 
     //$eventHandler->serverTimeToUserTimes($events);
-    $eventHandler->formatEventsDate($events, $helper->getConfig('event_date_month'));
+    $eventHandler->formatEventsDate($events, $extcalHelper->getConfig('event_date_month'));
 
     if (count($events) > $nbEvent) {
         $events = array_slice($events, 0, $nbEvent);

@@ -31,3 +31,14 @@ define('_MB_EXTCAL_TITLE_LENGTH', 'Title length');
 //2.37
 define('_MB_EXTCAL_UPCOMING_DAYS', '# of Days to Include in Search');
 define('_MB_EXTCAL_LOCALISATION',"en_EN");
+define('_MB_EXTCAL_FESTE_OF_DAY',"Fête(s) du jour :");
+
+define('_MB_EXTCAL_PLANNING', "Planning");
+define('_MB_EXTCAL_VIEW_PLANNING', "View the planning");
+define('_MB_EXTCAL_VIEW_MONTH', "Calendrier mensuel");
+define('_MB_EXTCAL_SEARCH_EVENT', "Rechercher un événement");
+define('_MB_EXTCAL_VIEW_MONTH_LIST', "Liste mensuelle");
+define('_MB_EXTCAL_VIEW_WEEK_LIST', "Liste hebdomadaire");
+define('_MB_EXTCAL_APPROVE_EVENT', "Valider les événements en attente d'approbation");
+define('_MB_EXTCAL_LOCATIONS', "Lieux");
+define('_MB_EXTCAL_DISPLAY_SAINT', "faire défiler le Saint");

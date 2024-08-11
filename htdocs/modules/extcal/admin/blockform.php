@@ -13,6 +13,7 @@
  * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  */
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+include_once __DIR__ . '/admin_header.php';
 
 $moduleDirName      = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName); //$capsDirName

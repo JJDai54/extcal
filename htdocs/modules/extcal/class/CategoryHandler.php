@@ -156,7 +156,8 @@ class CategoryHandler extends ExtcalPersistableObjectHandler
 //         if ($catId > 0){
 //             $criteriaCompo->add(new \Criteria('cat_id', $catId));
 //         }
-        return $this->getObjects($criteriaCompo);
+        $rst = $this->getObjects($criteriaCompo);
+        return $rst;
     }
     
     /**
@@ -232,6 +233,13 @@ class CategoryHandler extends ExtcalPersistableObjectHandler
      */
     public function haveSubmitRight($xoopsUser)
     {
-        return count($this->_extcalPerm->getAuthorizedCat($xoopsUser, 'extcal_cat_submit')) > 0;
+        $permArr = $this->_extcalPerm->getAuthorizedCat($xoopsUser, 'extcal_cat_submit');
+        if (!isset($permArr)) return 0;
+        //echo "<hr>zzz : {$permArr}<hr>";
+        if (is_array($permArr)){
+            return count($permArr) > 0;
+        }else{
+            return   0;
+        }
     }
 }

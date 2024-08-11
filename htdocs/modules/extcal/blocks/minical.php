@@ -85,8 +85,8 @@ function bExtcalMinicalShow($options)
     // Getting eXtCal object's handler
     //    $catHandler = xoops_getModuleHandler(_EXTCAL_CLS_CAT, _EXTCAL_MODULE);
     //$catHandler = \XoopsModules\Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
-    $helper = \XoopsModules\Extcal\Helper::getInstance();
-    $catHandler = $helper->getHandler(_EXTCAL_CLN_CAT);
+    $extcalHelper = \XoopsModules\Extcal\Helper::getInstance();
+    $catHandler = $extcalHelper->getHandler(_EXTCAL_CLN_CAT);
 
 
     $cats = $catHandler->getAllCatById($xoopsUser);

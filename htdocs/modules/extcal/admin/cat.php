@@ -72,7 +72,7 @@ switch ($op) {
 
         $form = new \XoopsThemeForm(_AM_EXTCAL_ADD_CATEGORY, 'add_cat', 'cat.php?op=enreg', 'post', true);
         $form->addElement(new \XoopsFormText(_AM_EXTCAL_NAME, 'cat_name', 30, 255), true);
-        $form->addElement(getEditor(_AM_EXTCAL_DESCRIPTION, 'cat_desc', $cat->getVar('cat_desc'), 5));
+        $form->addElement(getEditor(_AM_EXTCAL_DESCRIPTION, 'cat_desc', '', 5));
         $form->addElement(new \XoopsFormText(_AM_EXTCAL_WEIGHT, 'cat_weight', 30, 5, 0), false);
         $form->addElement(new \XoopsFormColorPicker(_AM_EXTCAL_COLOR, 'cat_color', '#FF0000'));
 
@@ -95,6 +95,7 @@ switch ($op) {
 
         require_once __DIR__ . '/admin_footer.php';
         break;
+        
     case 'edit':
         xoops_cp_header();
 
@@ -182,7 +183,7 @@ switch ($op) {
         $xoopsTpl->assign('cats', $cats);
         //$xoopsTpl->assign("module_dirname",    $xoopsModule->getVar("dirname") );
 
-        $xoopsTpl->display('db:admin/extcal_admin_cat_list.html');
+        $xoopsTpl->display('db:admin/extcal_admin_cat_list.tpl');
         require_once __DIR__ . '/admin_footer.php';
         break;
 }

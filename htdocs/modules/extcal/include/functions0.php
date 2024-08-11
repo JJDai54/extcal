@@ -17,6 +17,7 @@
  **/
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
 
 require_once XOOPS_ROOT_PATH . '/class/uploader.php';
 
@@ -319,33 +320,33 @@ function getListApproved($approved, $addAll = _ALL, $name = 'approved')
  * @param        $cat
  * @return array
  */
-function getCheckeCategories($name = 'cat', $cat)
-{
-    global $xoopsUser;
-    // Category selectbox
-    //<option style="background-color:#00FFFF;">VARCHAR</option>
-
-    $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
-    $catsList   = $catHandler->getAllCat($xoopsUser);
-
-    $t = [];
-    foreach ($catsList as $catList) {
-        $cat_id    = $catList->getVar('cat_id');
-        $name      = $catList->getVar('cat_name');
-        $cat_color = $catList->getVar('cat_color');
-        $checked   = in_array($cat_id, $cat, true) ? 'checked' : '';
-        $cat       = ''
-                     . "<div style='float:left; margin-left:5px;'>"
-                     . "<input type='checkbox' name='{$name}[{$cat_id}]' value='1' {$checked}>"
-                     . "<div style='absolute:left;height:12px; width:6px; background-color:#{$cat_color}; border:1px solid black; float:left; margin-right:5px;' ></div>"
-                     . " {$name}"
-                     . '</div>';
-
-        $t[] = $cat;
-    }
-
-    return $t;
-}
+// function getCheckeCategories($name = 'cat', $cat = null)
+// {
+//     global $xoopsUser;
+//     // Category selectbox
+//     //<option style="background-color:#00FFFF;">VARCHAR</option>
+// 
+//     $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
+//     $catsList   = $catHandler->getAllCat($xoopsUser);
+// 
+//     $t = [];
+//     foreach ($catsList as $catList) {
+//         $cat_id    = $catList->getVar('cat_id');
+//         $name      = $catList->getVar('cat_name');
+//         $cat_color = $catList->getVar('cat_color');
+//         $checked   = in_array($cat_id, $cat, true) ? 'checked' : '';
+//         $cat       = ''
+//                      . "<div style='float:left; margin-left:5px;'>"
+//                      . "<input type='checkbox' name='{$name}[{$cat_id}]' value='1' {$checked}>"
+//                      . "<div style='absolute:left;height:12px; width:6px; background-color:#{$cat_color}; border:1px solid black; float:left; margin-right:5px;' ></div>"
+//                      . " {$name}"
+//                      . '</div>';
+// 
+//         $t[] = $cat;
+//     }
+// 
+//     return $t;
+// }
 
 /*******************************************************************
  *
@@ -356,29 +357,29 @@ function getCheckeCategories($name = 'cat', $cat)
  * @param bool   $addNone
  * @return XoopsFormSelect
  */
-function getListOrderBy($name = 'orderby', $caption = '', $defaut, $addNone = false)
-{
-    global $xoopsUser;
-
-    $select = new \XoopsFormSelect($caption, $name, $defaut);
-    if ($addNone) {
-        $select->addOption('', '');
-    }
-
-    $select->addOption('year ASC', _MD_EXTCAL_YEAR . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
-    $select->addOption('year DESC', _MD_EXTCAL_YEAR . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
-
-    $select->addOption('month ASC', _MD_EXTCAL_MONTH . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
-    $select->addOption('month DESC', _MD_EXTCAL_MONTH . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
-
-    $select->addOption('event_title ASC', _MD_EXTCAL_ALPHA . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
-    $select->addOption('event_title DESC', _MD_EXTCAL_ALPHA . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
-
-    $select->addOption('cat_name ASC', _MD_EXTCAL_CATEGORY . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
-    $select->addOption('cat_name DESC', _MD_EXTCAL_CATEGORY . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
-
-    return $select;
-}
+// function getListOrderBy($name = 'orderby', $caption = '', $defaut, $addNone = false)
+// {
+//     global $xoopsUser;
+// 
+//     $select = new \XoopsFormSelect($caption, $name, $defaut);
+//     if ($addNone) {
+//         $select->addOption('', '');
+//     }
+// 
+//     $select->addOption('year ASC', _MD_EXTCAL_YEAR . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
+//     $select->addOption('year DESC', _MD_EXTCAL_YEAR . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
+// 
+//     $select->addOption('month ASC', _MD_EXTCAL_MONTH . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
+//     $select->addOption('month DESC', _MD_EXTCAL_MONTH . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
+// 
+//     $select->addOption('event_title ASC', _MD_EXTCAL_ALPHA . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
+//     $select->addOption('event_title DESC', _MD_EXTCAL_ALPHA . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
+// 
+//     $select->addOption('cat_name ASC', _MD_EXTCAL_CATEGORY . ' ' . _MD_EXTCAL_ORDER_BY_ASC);
+//     $select->addOption('cat_name DESC', _MD_EXTCAL_CATEGORY . ' ' . _MD_EXTCAL_ORDER_BY_DESC);
+// 
+//     return $select;
+// }
 
 /*******************************************************************
  *
@@ -388,17 +389,17 @@ function getListOrderBy($name = 'orderby', $caption = '', $defaut, $addNone = fa
  * @param        $defaut
  * @return XoopsFormSelect
  */
-function getListAndOr($name = 'andor', $caption = '', $defaut)
-{
-    global $xoopsUser;
-
-    $select = new \XoopsFormSelect($caption, $name, $defaut);
-
-    $select->addOption('AND', _MD_EXTCAL_AND);
-    $select->addOption('OR', _MD_EXTCAL_OR);
-
-    return $select;
-}
+// function getListAndOr($name = 'andor', $caption = '', $defaut = null)
+// {
+//     global $xoopsUser;
+// 
+//     $select = new \XoopsFormSelect($caption, $name, $defaut);
+// 
+//     $select->addOption('AND', _MD_EXTCAL_AND);
+//     $select->addOption('OR', _MD_EXTCAL_OR);
+// 
+//     return $select;
+// }
 
 /*******************************************************************
  *
@@ -646,7 +647,7 @@ function eclaircirCouleur($color, $plancher, $plafond)
  */
 function getEditor($caption, $name, $text, $row = 5)
 {
-global $helper, $xoopsUser, $xoopsModule;
+global $extcalHelper, $xoopsUser, $xoopsModule;
 
         $isAdmin = false;
         if (is_object($xoopsUser)) {
@@ -661,9 +662,9 @@ global $helper, $xoopsUser, $xoopsModule;
             $options['width']  = '100%';
             $options['height'] = '200px';
             if ($isAdmin) {
-                $descEditor = new \XoopsFormEditor($caption, $helper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
+                $descEditor = new \XoopsFormEditor($caption, $extcalHelper->getConfig('editorAdmin'), $options, $nohtml = false, $onfailure = 'textarea');
             } else {
-                $descEditor = new \XoopsFormEditor($caption, $helper->getConfig('editorUser'), $options, $nohtml = false, $onfailure = 'textarea');
+                $descEditor = new \XoopsFormEditor($caption, $extcalHelper->getConfig('editorUser'), $options, $nohtml = false, $onfailure = 'textarea');
             }
         } else {
             $descEditor = new \XoopsFormDhtmlTextArea($caption, $name, $text, '100%', '100%');

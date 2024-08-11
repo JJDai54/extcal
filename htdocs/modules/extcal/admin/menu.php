@@ -29,19 +29,19 @@ $module_handler  = xoops_gethandler('module');
 $module          = $module_handler->getByDirname($moduleDirName);
 $moduleId      = $module->mid();
 
-$pathIcon32      = $module->getInfo('icons32');
+$pathIcon32      = $module->getInfo('sysicons32');
 $pathModuleAdmin = $module->getInfo('dirmoduleadmin');
 //$pathLanguage    = $path . $pathModuleAdmin;
 
 
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
-$helper = Extcal\Helper::getInstance();
-
-$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
-if (is_object($helper->getModule())) {
-    $pathModIcon32 = $helper->getModule()->getInfo('modicons32');
-}
+// $extcalHelper = Extcal\Helper::getInstance();
+// 
+// $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+// if (is_object($extcalHelper->getModule())) {
+//     $pathModIcon32 = $extcalHelper->getModule()->getInfo('modicons32');
+// }
 
 $adminmenu[] = [
     'title' => _MI_EXTCAL_INDEX,
@@ -89,13 +89,16 @@ $adminmenu[] = [
 //     'icon'  => $pathIcon32 . '/block.png',
 // ];
 
-if ($helper->getConfig('displayDeveloperTools')) {
+/*
+if ($extcalHelper->getConfig('displayDeveloperTools')) {
     $adminmenu[] = [
         'title' => _MI_EXTCAL_ADMENU_MIGRATE,
         'link'  => 'admin/migrate.php',
         'icon'  => $pathIcon32 . '/database_go.png',
     ];
 }
+*/
+
 $adminmenu[] = [
     'title' => _MI_EXTCAL_ABOUT,
     'link'  => 'admin/about.php',
@@ -110,6 +113,8 @@ $adminmenu[] = [
     'icon'  => $pathIcon32 . '/exec.png'
 ];
 
+
+/*
 $adminmenu[] = [
     'title' => _MI_EXTCAL_UPGRADE,
     'menu'  => "update",
@@ -123,6 +128,7 @@ $adminmenu[] = [
     'link'  => "../system/admin.php?fct=blocksadmin&op=list&filter=1&selgen={$moduleId}&selmod=-2&selgrp=2&selvis=-1",
     'icon'  => $pathIcon32 . '/block.png'
 ];
+*/
 
 
  //   'link'  => 'admin/permissions-new.php',

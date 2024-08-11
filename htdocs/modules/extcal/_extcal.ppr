@@ -5,6 +5,7 @@ Compilator.CompileOnBackground=0
 Compilator.ProgSaveAll=0
 Compilator.ProgRunSelection=0
 Compilator.LogType=0
+Compilator.LogEncoding=0
 DefaultDir=J:\Xoops\modules-JJD\extcal\Projet\htdocs\modules\extcal
 DefaultCP=0
 LogtoEnd=1
@@ -166,7 +167,7 @@ _extcal
 			blocks\random_events.php
 			blocks\spotlight_events.php
 			blocks\upcoming.php
-		+class
+		-class
 			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
@@ -271,7 +272,7 @@ _extcal
 				class\Form\index.html
 				class\Form\ThemeForm.php
 			-pear
-				-Calendar
+				+Calendar
 					-Decorator
 						class\pear\Calendar\Decorator\index.html
 						class\pear\Calendar\Decorator\Textual.php
@@ -419,7 +420,7 @@ _extcal
 			class\Time.php
 			class\Utility.php
 		-css
-		-docs
+		+docs
 			docs\changelog.txt
 			docs\credits.txt
 			docs\index.html
@@ -429,7 +430,7 @@ _extcal
 			docs\readme.txt
 			docs\todo.txt
 			docs\upgrade.txt
-		-images
+		+images
 			-fleches
 				-vert
 					images\fleches\vert\fleche-droite.png
@@ -437,7 +438,7 @@ _extcal
 					images\fleches\vert\index.html
 				images\fleches\index.html
 			images\index.html
-		-include
+		+include
 			include\AC_RunActiveContent.js
 			include\admin.js
 			include\agenda_fnc.php
@@ -459,7 +460,7 @@ _extcal
 			include\ToolTips.js
 			include\update_function.php
 		-language
-			-english
+			+english
 				-help
 					language\english\help\extcal_help.tpl
 					language\english\help\help.tpl
@@ -505,12 +506,12 @@ _extcal
 			sql\requetes2install.sql
 			sql\requetes2uninstall.sql
 			sql\x251_extcal_saints.sql
-		-templates
-			-admin
+		+templates
+			+admin
 				templates\admin\extcal_admin_cat_list.tpl
 				templates\admin\extcal_debug_info.tpl
 				templates\admin\index.html
-			-blocks
+			+blocks
 				templates\blocks\extcal_block_day.tpl
 				templates\blocks\extcal_block_minical.tpl
 				templates\blocks\extcal_block_new.tpl
@@ -724,53 +725,76 @@ _extcal
 		view_search.php
 		view_week.php
 		view_year.php
-		xoops_version.~php
 		xoops_version.php
 [Open project files]
-0=class\EventHandler.php
-1=class\LocationHandler.php
-2=sql\mysql.sql
-3=class\Eventmember.php
-4=admin\event.php
-5=..\..\..\..\..\..\..\zzz\larussa.php
-6=admin\admin_header.php
-7=header.php
-8=class\CategoryHandler.php
-9=blocks\minical.php
-10=blocks\upcoming.php
+0=admin\menu.php
+1=xoops_version.php
+2=tests\modules\profile\admin\admin_header.php
+3=admin\admin_header.php
+4=header.php
+5=class\EventHandler.php
+6=admin\event.php
+7=class\CategoryHandler.php
+8=index.php
+9=view_agenda-day.php
+10=class\pear\Calendar\Month.php
+11=view_calendar-month.php
+12=include\agenda_fnc.php
+13=include\constantes.php
+14=view_calendar-week.php
+15=sql\mysql.sql
+16=docs\changelog.txt
 [Selected Project Files]
 Main=
-Selected=class\EventHandler.php
+Selected=xoops_version.php
+[admin\menu.php]
+TopLine=79
+Caret=1,132
+[xoops_version.php]
+TopLine=37
+Caret=39,58
+[tests\modules\profile\admin\admin_header.php]
+TopLine=1
+Caret=2,54
+[admin\admin_header.php]
+TopLine=13
+Caret=8,39
+[header.php]
+TopLine=9
+Caret=1,21
 [class\EventHandler.php]
-TopLine=428
-Caret=1,437
-[class\LocationHandler.php]
-TopLine=276
-Caret=39,294
-[sql\mysql.sql]
-TopLine=1
-Caret=22,13
-[class\Eventmember.php]
-TopLine=1
-Caret=1,1
+TopLine=1000
+Caret=37,1030
 [admin\event.php]
 TopLine=1
-Caret=30,25
-[..\..\..\..\..\..\..\zzz\larussa.php]
-TopLine=9
-Caret=1,37
-[admin\admin_header.php]
-TopLine=3
-Caret=1,1
-[header.php]
-TopLine=38
-Caret=1,59
+Caret=2,29
 [class\CategoryHandler.php]
-TopLine=158
-Caret=39,171
-[blocks\minical.php]
-TopLine=111
-Caret=44,131
-[blocks\upcoming.php]
-TopLine=73
-Caret=1,93
+TopLine=148
+Caret=20,160
+[index.php]
+TopLine=1
+Caret=38,8
+[view_agenda-day.php]
+TopLine=1
+Caret=1,12
+[class\pear\Calendar\Month.php]
+TopLine=78
+Caret=1,124
+[view_calendar-month.php]
+TopLine=93
+Caret=32,126
+[include\agenda_fnc.php]
+TopLine=472
+Caret=5,475
+[include\constantes.php]
+TopLine=101
+Caret=9,120
+[view_calendar-week.php]
+TopLine=69
+Caret=54,102
+[sql\mysql.sql]
+TopLine=1
+Caret=22,18
+[docs\changelog.txt]
+TopLine=1
+Caret=9,1

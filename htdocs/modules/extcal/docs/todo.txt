@@ -1,5 +1,10 @@
 To do list
 =============
+
+ALTER TABLE `x251_extcal_event` ADD `event_alert` VARCHAR(255) NOT NULL AFTER `event_desc`; 
+Correction permission sur evenement récurrents
+
+
  - probleme de date dans la version anglaise
 
  - Ajouter une purge des événements par selecion de annees categories, ... a rapprocher du point précédent peut etre.

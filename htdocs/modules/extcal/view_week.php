@@ -24,8 +24,6 @@ $params                                  = ['view' => _EXTCAL_NAV_WEEK, 'file' =
 $GLOBALS['xoopsOption']['template_main'] = "extcal_view_{$params['view']}.tpl";
 require_once __DIR__ . '/header.php';
 
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
 //------------------------------------------
 /* test fuseau - JJDai
 global $xoopsConfig; 
@@ -38,8 +36,8 @@ get_params_YMDC($year, $month, $day, $cat);
 
 $dayTS = mktime(0, 0, 0, $month, $day, $year);
 
-//$offset = $helper->getConfig('week_start_day') - date('w', $dayTS);
-$offset = date('w', $dayTS) + 7 - $helper->getConfig('week_start_day') < 7 ? date('w', $dayTS) + 7 - $helper->getConfig('week_start_day') : 0;
+//$offset = $extcalHelper->getConfig('week_start_day') - date('w', $dayTS);
+$offset = date('w', $dayTS) + 7 - $extcalHelper->getConfig('week_start_day') < 7 ? date('w', $dayTS) + 7 - $extcalHelper->getConfig('week_start_day') : 0;
 
 $dayTS -= ($offset * _EXTCAL_TS_DAY);
 $year  = date('Y', $dayTS);
@@ -48,7 +46,7 @@ $day   = date('j', $dayTS);
 
 /*
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
-$form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
+$form->addElement(getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
 $form->addElement(getListDays($day));
 $form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));

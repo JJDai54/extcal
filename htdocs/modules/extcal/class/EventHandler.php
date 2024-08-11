@@ -768,7 +768,7 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
      * @return \CriteriaCompo
      */
 
-    public function getCriteriaCompo($start, $end, $cat = 0, $user)
+    public function getCriteriaCompo($start, $end, $cat = 0, $user = null)
     {
         //selection des événement non récurrent
         $criteriaNoRecur = new \CriteriaCompo();
@@ -812,7 +812,7 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
      *
      * @return \CriteriaCompo
      */
-    public function getCalendarCriteriaCompo($start, $end, $cat = 0, $user)
+    public function getCalendarCriteriaCompo($start, $end, $cat = 0, $user = null)
     {
         $criteriaCompo = $this->getCriteriaCompo($start, $end, $cat, $user);
         if (!Extcal\Helper::getInstance()->getConfig('diplay_past_event_cal')) {
@@ -830,7 +830,7 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
      *
      * @return \CriteriaCompo
      */
-    public function getListCriteriaCompo($start, $end, $cat = 0, $user)
+    public function getListCriteriaCompo($start, $end, $cat = 0, $user = null)
     {
         $criteriaCompo = $this->getCriteriaCompo($start, $end, $cat, $user);
         if (!intVal(Extcal\Helper::getInstance()->getConfig('diplay_past_event_list'))) {
@@ -1016,20 +1016,22 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
      */
     public function addCatSelectCriteria(&$criteriaCompo, $cat = null)
     {
-    global $allCatsAllowed;
+    global $allCatsAllowed, $catHandler, $xoopsUser;
+//$allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
     
          $criteriaCompo->add(new \Criteria('event_isrecur', 1, '='));
         
-        if (!isset($cat)) $cat = 0;
+        if (!isset($cat)) $cat = array();
         if ($cat > 0 && !array_key_exists($cat, $allCatsAllowed)) $cat = 0;
         
         if ($cat > 0) {
           $criteriaCompo->add(new \Criteria('cat_id', $cat, '='));
         }else{
+            if(count($allCatsAllowed) > 0) { //JJDai - a revoir
             $catIds = implode(',', array_keys($allCatsAllowed));
             //if($catIds !== '')
-            if(count($allCatsAllowed) > 0) //JJDai - a revoir
             $criteriaCompo->add(new \Criteria('cat_id', "({$catIds})", 'IN'));
+            }
 //            echo "<hr>===> addCatSelectCriteria : catIds = |{$catIds}|<br>". $criteriaCompo->renderWhere() ."<hr>";
         }
         //--------------------------------------------------------------        
@@ -1072,10 +1074,10 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
     public function getEventForm($siteSide = 'user', $mode = 'new', $data = null)
     {
 //    ext_echo($data);
-        /** @var Extcal\Helper $helper */
-        $helper      = Extcal\Helper::getInstance();
-        $catHandler  = $helper->getHandler(_EXTCAL_CLN_CAT);
-        $fileHandler = $helper->getHandler(_EXTCAL_CLN_FILE);
+        /** @var Extcal\Helper $extcalHelper */
+        $extcalHelper      = Extcal\Helper::getInstance();
+        $catHandler  = $extcalHelper->getHandler(_EXTCAL_CLN_CAT);
+        $fileHandler = $extcalHelper->getHandler(_EXTCAL_CLN_FILE);
 
         /***************************************************/
         if ('admin' === $siteSide) {
@@ -2518,9 +2520,9 @@ $xoTheme->addStylesheet('modules/extcal/include/style.css');
         $month = 0,
         $day = 0,
         $cat = 0,
-        $queryarray,
-        $andor,
-        $orderBy,
+        $queryarray = null,
+        $andor = null,
+        $orderBy = null,
         $limit = 0,
         $offset = 0,
         $userId = 0,

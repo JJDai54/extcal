@@ -8,6 +8,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+//echo "===>" .  __FILE__ . "<br>";
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
@@ -43,10 +44,10 @@ function tableExists($tablename)
  * @return bool true if ready to install, false if not
  */
 function xoops_module_pre_update_extcal(\XoopsModule $module)
-{
-    /** @var Extcal\Helper $helper */
+{global $extcalHelper;
+    /** @var Extcal\Helper $extcalHelper */
     /** @var Extcal\Utility $utility */
-    $helper  = Extcal\Helper::getInstance();
+
     $utility = new Extcal\Utility();
 
     $xoopsSuccess = $utility::checkVerXoops($module);
@@ -63,7 +64,7 @@ function xoops_module_pre_update_extcal(\XoopsModule $module)
  * @return bool true if update successful, false if not
  */
 function xoops_module_update_extcal(\XoopsModule $module, $previousVersion = null)
-{
+{global $extcalHelper;
     //    global $xoopsDB;
     $moduleDirName = basename(dirname(__DIR__));
 
@@ -103,10 +104,9 @@ function xoops_module_update_extcal(\XoopsModule $module, $previousVersion = nul
 
     $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
-    /** @var Extcal\Helper $helper */
+    /** @var Extcal\Helper $extcalHelper */
     /** @var Extcal\Utility $utility */
     /** @var Extcal\Common\Configurator $configurator */
-    $helper       = Extcal\Helper::getInstance();
     $utility      = new Extcal\Utility();
     $configurator = new Extcal\Common\Configurator();
 

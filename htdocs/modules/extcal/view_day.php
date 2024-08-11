@@ -10,6 +10,8 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 /**
  * @copyright    {@link https://xoops.org/ XOOPS Project}
@@ -24,16 +26,13 @@ $params                                  = ['view' => _EXTCAL_NAV_DAY, 'file' =>
 $GLOBALS['xoopsOption']['template_main'] = "extcal_view_{$params['view']}.tpl";
 require_once __DIR__ . '/header.php';
 
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
-
 /* ========================================================================== */
 get_params_YMDC($year, $month, $day, $cat);
 /* ========================================================================== */
 
 /*
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
-$form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
+$form->addElement(getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
 $form->addElement(getListDays($day));
 $form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
@@ -61,7 +60,7 @@ $events   = $eventHandler->getEventsOnPeriode($criteres);
 $eventsArray = $events;
 
 // Formating date
-//$eventHandler->formatEventsDate($events, $helper->getConfig('event_date_year'));
+//$eventHandler->formatEventsDate($events, $extcalHelper->getConfig('event_date_year'));
 
 // Treatment for recurring event
 // $startDay = mktime(0, 0, 0, $month, $day, $year);
@@ -72,12 +71,12 @@ $eventsArray = $events;
 //
 //     if (!$event['event_isrecur']) {
 //         // Formating date
-//         $eventHandler->formatEventDate($event, $helper->getConfig('event_date_week'));
+//         $eventHandler->formatEventDate($event, $extcalHelper->getConfig('event_date_week'));
 //         $eventsArray[] = $event;
 //     } else {
 //         $recurEvents = $eventHandler->getRecurEventToDisplay($event, $startDay, $endDay);
 //         // Formating date
-//         $eventHandler->formatEventsDate($recurEvents, $helper->getConfig('event_date_week'));
+//         $eventHandler->formatEventsDate($recurEvents, $extcalHelper->getConfig('event_date_week'));
 //         $eventsArray = array_merge($eventsArray, $recurEvents);
 //
 //     }
@@ -103,15 +102,15 @@ $nDayCalObj = $dayCalObj->nextDay('object');
 $navig = [
     'prev' => [
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $pDayCalObj->thisYear(),$pDayCalObj->thisMonth() , $pDayCalObj->thisDay(), $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_day'), $pDayCalObj->getTimestamp()),
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_day'), $pDayCalObj->getTimestamp()),
     ],
     'this' => [
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $dayCalObj->thisYear(), $dayCalObj->thisMonth(), $dayCalObj->thisDay(), $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_day'), $dayCalObj->getTimestamp()),
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_day'), $dayCalObj->getTimestamp()),
     ],
     'next' => [
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $nDayCalObj->thisYear(), $nDayCalObj->thisMonth(), $nDayCalObj->thisDay(), $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_day'), $nDayCalObj->getTimestamp()),
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_day'), $nDayCalObj->getTimestamp()),
     ],
 ];
 
@@ -122,8 +121,8 @@ $xoopsTpl->assign('xoops_pagetitle', $xoopsModule->getVar('name') . ' ' . $navig
 $xoopsTpl->assign('navig', $navig);
 
 //Display tooltip
-$xoopsTpl->assign('showInfoBulle', $helper->getConfig('showInfoBulle'));
-$xoopsTpl->assign('showId', $helper->getConfig('showId'));
+$xoopsTpl->assign('showInfoBulle', $extcalHelper->getConfig('showInfoBulle'));
+$xoopsTpl->assign('showId', $extcalHelper->getConfig('showId'));
 
 // Assigning current form navig data to the template
 $xoopsTpl->assign('selectedCat', $cat);
@@ -134,7 +133,7 @@ $xoopsTpl->assign('params', $params);
 
 $tNavBar = getNavBarTabs($params['view']);
 $xoopsTpl->assign('tNavBar', $tNavBar);
-$xoopsTpl->assign('list_position', $helper->getConfig('list_position'));
+$xoopsTpl->assign('list_position', $extcalHelper->getConfig('list_position'));
 // echoArray($tNavBar,true);
 //---------------------------------------------------------------
 if ($xoopsUser) {

@@ -1,14 +1,13 @@
 <?php
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 
 require_once __DIR__ . '/include/constantes.php';
 require_once __DIR__ . '/include/mail_fnc.php';
-
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
 
 // $member_uid = 1;
 // $event_id = 393;
@@ -33,7 +32,7 @@ exit;
 */
 
 //sendMail2member($mode, $event_id, $member_uid, $subject, $tplMessage)
-//sendMail2member($helper->getConfig('email_Mode'), $event_id, $member_uid, $newStatus, $oldStatus, $message);
+//sendMail2member($extcalHelper->getConfig('email_Mode'), $event_id, $member_uid, $newStatus, $oldStatus, $message);
 sendMail2member(_EXTCAL_HEADER_HTML, $event_id, $member_uid, $userName, $message);
 
 // $t = print_r(get_defined_constants(), true);
@@ -46,7 +45,7 @@ if (!$GLOBALS['xoopsSecurity']->check()) {
     redirect_header('index.php', 3, _NOPERM . '<br>' . implode('<br>', $GLOBALS['xoopsSecurity']->getErrors()));
 }
 
-if ($xoopsUser && $helper->getConfig('whos_going')) {
+if ($xoopsUser && $extcalHelper->getConfig('whos_going')) {
     // If param are right
     if (\Xmf\Request::getInt('event', 0, 'POST') > 0 && ('add' === $_POST['mode'] || 'remove' === $_POST['mode'])) {
         $eventHandler       = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);

@@ -44,15 +44,15 @@ Extcal\Helper::getInstance()->loadLanguage('main');
  * @return array
  */
 
-function agenda_getCanevas($ts, $hStart, $hEnd, $mPlage = 15, $nbJours = 1, $formatDate, $formatJour = 'H:i')
+function agenda_getCanevas($ts, $hStart, $hEnd, $mPlage = 15, $nbJours = 1, $formatDate ='', $formatJour = 'H:i')
 {
-    /** @var Extcal\Helper $helper */
-    $helper = Extcal\Helper::getInstance();
+    /** @var Extcal\Helper $extcalHelper */
+    $extcalHelper = Extcal\Helper::getInstance();
     $jour   = date('d', $ts);
     $mois   = date('m', $ts);
     $an     = date('Y', $ts);
     if (!isset($formatDate)) {
-        $formatDate = $helper->getConfig('event_date_week');
+        $formatDate = $extcalHelper->getConfig('event_date_week');
     }
 
 
@@ -275,18 +275,20 @@ function orderEvents($event1, $event2)
  *
  ******************************************************************/
 function getAsearch($year, $month, $day, $cat, $addJS=true){
-global $helper;
+global $extcalHelper;
+  
+  $extcalHelper = Extcal\Helper::getInstance();
   $tSearch = array();
 
   $jsOnChange = (($addJS) ? "onChange='document.ext_search_form.submit()'" : '');
 
   if(!is_null($year)){
-  $lstYear = getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after'));
+  $lstYear = getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after'));
   $lstYear->setExtra($jsOnChange);
   $tSearch['year'] = $lstYear->render();
 
   /*
-  $tSearch['year'] = getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after'))->render();
+  $tSearch['year'] = getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after'))->render();
   */
   }
 
@@ -468,18 +470,28 @@ function ext_loadLanguage($name)
  */
 
 function getNavBarTabs($currentTab = '')
-{
-    /** @var Extcal\Helper $helper */
-    $helper = Extcal\Helper::getInstance();
+{global $extcalHelper;
+    /** @var Extcal\Helper $extcalHelper */
+    $extcalHelper = Extcal\Helper::getInstance();
 
     ext_loadLanguage('_MD_');
 
-    $visibleTabs = $helper->getConfig('visible_tabs');
+    if($extcalHelper){
+        $visibleTabs = $extcalHelper->getConfig('visible_tabs');
+        $tabs = $extcalHelper->getConfig('weight_tabs');
+        //$tabs    = str_replace("\n", $sep, $extcalHelper->getConfig('_EXTCAL_NAV_LIST'));
+    }else{
+        $visibleTabs = array();
+        $tabs = _EXTCAL_NAV_LIST ;
+    }
+    
+    
     $tNavBar     = $ordre = [];
 //ext_echo($visibleTabs);
 
     $sep     = '=';
-    $tabs    = str_replace("\n", $sep, $helper->getConfig('weight_tabs'));
+    $tabs    = str_replace("\n", $sep, $tabs);
+    //echo "getNavBarTabs : tabs = ===> {$tabs}<br>";
     $tabs    = str_replace("\r", '', $tabs);
     $tabs    = str_replace(' ', '', $tabs);
     $t       = explode($sep, $tabs);

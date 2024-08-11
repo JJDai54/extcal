@@ -35,6 +35,7 @@ xoops_loadLanguage('main', $thisModuleDir);
 
 $pathIcon16      = '../' . $xoopsModule->getInfo('icons16');
 $pathIcon32      = '../' . $xoopsModule->getInfo('icons32');
+
 $pathModuleAdmin = $xoopsModule->getInfo('dirmoduleadmin');
 
 $myts = MyTextSanitizer::getInstance();

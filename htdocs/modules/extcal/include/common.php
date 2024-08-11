@@ -18,6 +18,7 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
 
 require_once dirname(__DIR__) . '/preloads/autoloader.php';
 
@@ -25,14 +26,15 @@ $moduleDirName      = basename(dirname(__DIR__));
 $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
 /** @var \XoopsDatabase $db */
-/** @var Extcal\Helper $helper */
+/** @var Extcal\Helper $extcalHelper */
 /** @var Extcal\Utility $utility */
-$db      = \XoopsDatabaseFactory::getDatabaseConnection();
-$helper  = Extcal\Helper::getInstance();
+//$db      = \XoopsDatabaseFactory::getDatabaseConnection();
 $utility = new Extcal\Utility();
 //$configurator = new Extcal\Common\Configurator();
 
-$helper->loadLanguage('common');
+$extcalHelper = Extcal\Helper::getInstance();
+
+$extcalHelper->loadLanguage('common');
 
 //handlers
 ///** @var \XoopsPersistableObjectHandler $extcal_brokenHandler */
@@ -59,8 +61,8 @@ if (!defined($moduleDirNameUpper . '_CONSTANTS_DEFINED')) {
 
 $pathIcon16 = \Xmf\Module\Admin::iconUrl('', 16);
 $pathIcon32 = \Xmf\Module\Admin::iconUrl('', 32);
-//$pathModIcon16 = $helper->getModule()->getInfo('modicons16');
-//$pathModIcon32 = $helper->getModule()->getInfo('modicons32');
+//$pathModIcon16 = $extcalHelper->getModule()->getInfo('modicons16');
+//$pathModIcon32 = $extcalHelper->getModule()->getInfo('modicons32');
 
 $icons = [
     'edit'    => "<img src='" . $pathIcon16 . "/edit.png'  alt=" . _EDIT . "' align='middle'>",
@@ -86,9 +88,9 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof \XoopsTpl)
 
 $GLOBALS['xoopsTpl']->assign('mod_url', XOOPS_URL . '/modules/' . $moduleDirName);
 // Local icons path
-if (is_object($helper->getModule())) {
-    $pathModIcon16 = $helper->getModule()->getInfo('modicons16');
-    $pathModIcon32 = $helper->getModule()->getInfo('modicons32');
+if (is_object($extcalHelper->getModule())) {
+    $pathModIcon16 = $extcalHelper->getModule()->getInfo('modicons16');
+    $pathModIcon32 = $extcalHelper->getModule()->getInfo('modicons32');
 
     $GLOBALS['xoopsTpl']->assign('pathModIcon16', XOOPS_URL . '/modules/' . $moduleDirName . '/' . $pathModIcon16);
     $GLOBALS['xoopsTpl']->assign('pathModIcon32', $pathModIcon32);

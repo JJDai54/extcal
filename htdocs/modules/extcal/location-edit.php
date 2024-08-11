@@ -18,13 +18,14 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';
 $GLOBALS['xoopsOption']['template_main'] = 'extcal_location_edit.tpl';
 require_once __DIR__ . '/header.php';
 
-$helper = Extcal\Helper::getInstance();
 global $xoopsUser, $xoopsModuleConfig, $xoopsModule, $xoopsDB;
 //echo "<hr>formulaire location (" . rand(0,100) . ")<hr>";
 

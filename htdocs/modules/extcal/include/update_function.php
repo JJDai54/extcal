@@ -25,6 +25,9 @@
  *
  * @return bool
  */
+ 
+//echo "===>" .  __FILE__ . "<br>";
+ 
 function xoops_module_update_extcal(\XoopsModule $xoopsModule, $previousVersion = null)
 {
     $newVersion = $xoopsModule->getVar('version') * 100;

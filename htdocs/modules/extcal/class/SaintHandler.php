@@ -115,7 +115,7 @@ class SaintHandler extends ExtcalPersistableObjectHandler
      * @return srting
      */
 
-    public function getHTML($month, $day, $prefixe='', $attributsArray){
+    public function getHTML($month, $day, $prefixe='', $attributsArray = null){
 /*  exemple pour$options qui représente les attibuts de la balise marquee
 $attributsArray = array(
 'DIRECTION'=> 'left',

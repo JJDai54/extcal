@@ -40,7 +40,7 @@ $configurator = new Common\Configurator();
  *
  **********************************************************/
 function display_traitements(){
-global $adminObject;
+global $adminObject, $extcalHelper;
 
     $boxName = "Traitements";
     $adminObject->addInfoBox($boxName);
@@ -80,14 +80,14 @@ $adminObject->displayNavigation(basename(__FILE__));
 display_traitements();
 
 //check for latest release
-$newRelease = $utility::checkVerModule($helper);
+$newRelease = $utility::checkVerModule($extcalHelper);
 if (!empty($newRelease)) {
     $adminObject->addItemButton($newRelease[0], $newRelease[1], 'download', 'style="color : Red"');
 }
 
 //------------- Test Data ----------------------------
 /*
-if ($helper->getConfig('displaySampleButton')) {
+if ($extcalHelper->getConfig('displaySampleButton')) {
     xoops_loadLanguage('admin/modulesadmin', 'system');
     require_once dirname(__DIR__) . '/testdata/index.php';
 

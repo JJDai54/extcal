@@ -18,12 +18,31 @@
  */
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
 
 // defined('XOOPS_ROOT_PATH') || die('XOOPS Root Path not defined');
 
 require_once __DIR__ . '/preloads/autoloader.php';
 
 $moduleDirName = basename(__DIR__);
+$catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
+/** @var Extcal\EventHandler $eventHandler */
+// $eventHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);
+// /** @var Extcal\EventmemberHandler $eventMemberHandler */
+// $eventMemberHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_MEMBER);
+// $extcalHelper = Extcal\Helper::getInstance();
+// 
+// 
+// 
+// $fileMemberHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_FILE);
+// $eventNotMemberHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_NOT_MEMBER);
+// $locationHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_LOCATION);
+// $saintHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_SAINT);
+
+
+
+
+
 
 require_once __DIR__ . '/include/constantes.php';
 require_once __DIR__ . '/include/agenda_fnc.php';
@@ -36,9 +55,9 @@ setlocale(LC_TIME, $xoopsConfig['language']);
 //if (!defined('_EXT_TPL_EXTENSION')) define ('_EXT_TPL_EXTENSION', '.html');
                                 
 //***************************************************************************************
-$modversion['version']          = '2.82';
+$modversion['version']          = '2.84';
 $modversion['module_status']    = 'Beta 1';
-$modversion['release_date']     = '2022/03/16';
+$modversion['release_date']     = '2024/08/11';
 $modversion['name']             = _MI_EXTCAL_NAME;
 $modversion['description']      = _MI_EXTCAL_DESC;
 $modversion['credits']          = 'Zoullou, Mage, Mamba, JJDai (JJ Delalandre)';
@@ -69,6 +88,12 @@ $modversion['min_xoops']           = '2.5.9';
 $modversion['hasAdmin']   = 1;
 $modversion['adminindex'] = 'admin/index.php';
 $modversion['adminmenu']  = 'admin/menu.php';
+
+$modversion['sysicons16']  = '../../Frameworks/moduleclasses/icons/16';
+$modversion['sysicons32']  = '../../Frameworks/moduleclasses/icons/32';
+$modversion['modicons16']  = 'assets/icons/16';
+$modversion['modicons32']  = 'assets/icons/32';
+
 
 
 $modversion['system_menu'] = 1;
@@ -574,7 +599,6 @@ $modversion['config'][] = [
 
 /**
  * Show Developer Tools?
- */
 $modversion['config'][] = [
     'name'        => 'displayDeveloperTools',
     'title'       => '_MI_EXTCAL_SHOW_DEV_TOOLS',
@@ -583,6 +607,7 @@ $modversion['config'][] = [
     'valuetype'   => 'int',
     'default'     => 0,
 ];
+ */
 
 // $modversion['config'][] = [
 //     'name'        => 'showSaintInMinical',

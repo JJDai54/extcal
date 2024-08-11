@@ -140,7 +140,7 @@ define('_MI_EXTCAL_START_PAGE',"Page d'accueil du module");
 define('_MI_EXTCAL_SUBMIT_EVENT',"Soumettre un événement");
 define('_MI_EXTCAL_SUBMIT_LOCATION',"Soumettre un lieux");
 define('_MI_EXTCAL_TABS_WEIGHT',"Ordre des onglets");
-define('_MI_EXTCAL_TABS_WEIGHT_DESC',"Set the tab order <br>Be careful to respect tab names:<br>"
+define('_MI_EXTCAL_TABS_WEIGHT_DESC',"Defini l'odre des onglets<br>Attention à bien ortographier lee nom des onglets:<br>"
      . "<font color='#0000FF'>" . _EXTCAL_NAV_LIST ."</font>"       
      . " <br>Separator: new line");
 define('_MI_EXTCAL_VISIBLE_TAB_DESC',"Détermine les vues à afficher.");

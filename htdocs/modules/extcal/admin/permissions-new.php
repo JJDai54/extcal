@@ -18,8 +18,8 @@ require __DIR__ . '/admin_header.php';
 xoops_cp_header();
 require_once $GLOBALS['xoops']->path('www/class/xoopsform/grouppermform.php');
 
-/** @var \XoopsModules\Tdmdownloads\Helper $helper */
-$helper = \XoopsModules\extcal\Helper::getInstance();
+/** @var \XoopsModules\Tdmdownloads\Helper $extcalHelper */
+$extcalHelper = \XoopsModules\extcal\Helper::getInstance();
 
 $adminObject = \Xmf\Module\Admin::getInstance();
 
@@ -62,7 +62,7 @@ switch ($permission) {
         break;
     case 3:    // Download Permission
         $formTitle = _AM_TDMDOWNLOADS_PERM_DOWNLOAD;
-        if (1 == $helper->getConfig('permission_download')) {
+        if (1 == $extcalHelper->getConfig('permission_download')) {
             $permissionDescription = _AM_TDMDOWNLOADS_PERM_DOWNLOAD_DSC;
             $permissionName        = 'tdmdownloads_download';
         } else {
@@ -90,7 +90,7 @@ if (4 === $permission) {
         $permissionsForm->addItem($perm_id, $permissionName);
     }
 } else {
-    if (3 === $permission && 2 === $helper->getConfig('permission_download')) {
+    if (3 === $permission && 2 === $extcalHelper->getConfig('permission_download')) {
         $sql    = 'SELECT lid, cid, title FROM ' . $xoopsDB->prefix('tdmdownloads_downloads') . ' ORDER BY title';
         $result = $xoopsDB->query($sql);
         if ($result) {

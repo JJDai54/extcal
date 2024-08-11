@@ -1,47 +1,46 @@
-
-ALTER TABLE `x251_extcal_event` ADD `event_alert` VARCHAR(255) NOT NULL AFTER `event_desc`; 
-Correction permission sur evenement récurrents
-
+<h5>2.84 Beta 1  - 2024/08/11 (JJDai : JJDelalandre@orange.fr)</h5>  
+Mise à niveau pour xoops 2.5.12
+remplacement de$helper par $extcalHelper pour éviter les conflits
 
 <h5>2.5 Beta 1  [NOT RELEASED]</h5>  Dev: Xoops 2.5.9, PHP 7.3.x
 <hr>
   (JJDai : JJDelalandre@orange.fr)
  code :
  Simplification de la fonction "getOccurTS" suppression du switch pour un algorythme
- remplacement des code pour les periodicite mensuel, ajout d'un "+" pour premier
+ remplacement des code pour les periodicites mensuelles, ajout d'un "+" pour premier
  afin que les codes pour premier et dernier aient le même format exemple :
  "+1ME" pour premier mercredi de chaque mois au lieu de "1ME"
  "-1ME" pour dernier mercredi de chaque mois au lieu de "-1ME"
  Ajout des constantes mamquantes en français
- deux couleur sont parametrable dans les préférences couleur de fond et surlignage de la ligne survolée
- version.php : Remplacement ded tableu des type mime par l'inclusion du ficheir : /include/mimetypes.inc.php de xoops
+ deux couleurs sont parametrables dans les préférences couleur de fond et surlignage de la ligne survolée
+ version.php : Remplacement de tableau des type mime par l'inclusion du fichier : /include/mimetypes.inc.php de xoops
                Correction de la creation des menus pour intégration avec xsitemap
  Corection des bugs:
  - enregistrement de l'icone dans les categories
- - Correction des évènnement récurrents qui apparaissais en dehors des tableau dans les listes mensuelles, hedomadaire et journaliere
- - affichage de l'icone des categorie si celui de l'événement n'est pas défini
+ - Correction des évènnements récurrents qui apparaissaient en dehors des tableauw dans les listes mensuelles, hedomadaires et journalieres
+ - affichage de l'icone des categories si celui de l'événement n'est pas défini
  - correction de la sélection par catégorie qui ne fonctionnait pas
- - Correction du passage d'un année à l'année suivant dans l'agenda hebdo qui sautait une année
+ - Correction du passage d'une année à l'année suivante dans l'agenda hebdo qui sautait une année
    (bug de pear) remplacement par une fonction dédiée dans le module
  - Correction du nom de la classe des versions dans les mises à jour "function "xoops_module_update_extcal"),
    La majuscule du premier caractere de la classe n'était pas pris en compte ajout de "ucfirst(nom_de_la_classe")
  - Correction filtrage des évennements selon permissions (hamonisation récurrents et non-récurrents)
 
- Ajoute de parametres dans config
- - acivation ou non des couleurs suivntes
+ Ajout de parametres dans config
+ - acivation ou non des couleurs suivantes
  - ajout d'un style pour les fond de calendrier qui ne sont pas lisible avec certain theme
  - ce style est défini dans le template "extcal_view_calendar_style-01"
  - couleur de fond des calendriers
- - couleur des lignes survlée des calendriers
- - couleur de la cellule survollée des calendrier
+ - couleur des lignes survlées des calendriers
+ - couleur de la cellule survollée des calendriers
 
  ergonomie :
- - Ajout de flèches de navigations pour periodes suivantes et précédentes
- - ajout du champ "location.nom" dans les infobule quand celui est renseigner dans l'événement
- - Gestion des permission, ajout d'une sélection des categories de permission par une liste déroulante à la place des "div" ouvrants et fermants
- - Ajout du template "extcal_search"  à la pace  de "new XoopsSimpleForm ...."
+ - Ajout de flèches de navigation pour periode suivante et précédente
+ - ajout du champ "location.nom" dans les infobules quand celui ci est renseigné dans l'événement
+ - Gestion des permissions, ajout d'une sélection des categories de permissions par une liste déroulante à la place des "div" ouvrants et fermants
+ - Ajout du template "extcal_search"  à la place  de "new XoopsSimpleForm ...."
    afin de faciliter le placement des listes de recherche et du bouton submit
- - Ajout des liens sur le nom des categorie en bas des tableaus
+ - Ajout des liens sur le nom des categories en bas des tableaux
 
  Base de données :
  - changement du nom "id" de la table location en "location_id" et adaptation du code

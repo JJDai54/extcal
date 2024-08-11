@@ -30,8 +30,8 @@ function bExtcalDayShow($options)
 {
     //    // require_once  dirname(__DIR__) . '/class/Config.php';
 
-    /** @var Extcal\Helper $helper */
-    $helper = \XoopsModules\Extcal\Helper::getInstance();
+    /** @var Extcal\Helper $extcalHelper */
+    $extcalHelper = \XoopsModules\Extcal\Helper::getInstance();
 
     /** @var Extcal\EventHandler $eventHandler */
     $eventHandler = \XoopsModules\Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_EVENT);
@@ -48,7 +48,7 @@ function bExtcalDayShow($options)
 
     $events = $eventHandler->objectToArray($eventHandler->getThisDayEvent($nbEvent, $options));
     $eventHandler->serverTimeToUserTimes($events);
-    $eventHandler->formatEventsDate($events, $helper->getConfig('event_date_month'));
+    $eventHandler->formatEventsDate($events, $extcalHelper->getConfig('event_date_month'));
 
     return $events;
 }

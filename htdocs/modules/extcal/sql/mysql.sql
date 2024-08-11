@@ -7,8 +7,8 @@ CREATE TABLE `extcal_cat` (
   `cat_weight` INT          NOT NULL DEFAULT '0',
   `cat_icone`  VARCHAR(50)  NOT NULL,
   PRIMARY KEY (`cat_id`)
-)
-  COMMENT = 'eXtCal By Zoullou';
+);
+
 
 CREATE TABLE `extcal_event` (
   `event_id`            INT(11)      NOT NULL AUTO_INCREMENT,
@@ -38,8 +38,8 @@ CREATE TABLE `extcal_event` (
   `dohtml`              TINYINT(1)   NOT NULL DEFAULT '0',
   `event_icone`         VARCHAR(50)  NOT NULL,
   PRIMARY KEY (`event_id`)
-)
-  COMMENT = 'eXtCal By Zoullou';
+);
+
 
 CREATE TABLE `extcal_eventmember` (
   `eventmember_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -48,8 +48,8 @@ CREATE TABLE `extcal_eventmember` (
   `status`         INT     NOT NULL DEFAULT '0',
   PRIMARY KEY (`eventmember_id`),
   UNIQUE KEY `eventmember` (`event_id`, `uid`)
-)
-  COMMENT = 'eXtCal By Zoullou';
+);
+
 
 CREATE TABLE `extcal_eventnotmember` (
   `eventnotmember_id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -57,8 +57,8 @@ CREATE TABLE `extcal_eventnotmember` (
   `uid`               INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`eventnotmember_id`),
   UNIQUE KEY `eventnotmember` (`event_id`, `uid`)
-)
-  COMMENT = 'eXtCal By Zoullou';
+);
+
 
 CREATE TABLE `extcal_file` (
   `file_id`       INT(11)      NOT NULL AUTO_INCREMENT,
@@ -72,8 +72,8 @@ CREATE TABLE `extcal_file` (
   `event_id`      INT(11)      NOT NULL,
   `uid`           INT(11)      NOT NULL,
   PRIMARY KEY (`file_id`)
-)
-  COMMENT = 'eXtCal By Zoullou';
+);
+
 
 CREATE TABLE `extcal_location` (
   `location_id`           INT(5)       NOT NULL AUTO_INCREMENT,
@@ -95,8 +95,8 @@ CREATE TABLE `extcal_location` (
   `map`          TEXT         NULL,
 
   PRIMARY KEY (`location_id`)
-)
-  COMMENT = 'eXtCal By JJDai';
+);
+
 
 
 
@@ -109,5 +109,5 @@ CREATE TABLE `extcal_saint` (
   PRIMARY KEY (`saint_id`)
 ) ;
 
-  COMMENT = 'eXtCal By JJDai';
+
 

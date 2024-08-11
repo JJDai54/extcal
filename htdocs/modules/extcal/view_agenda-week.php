@@ -1,14 +1,14 @@
 <?php
 
 use XoopsModules\Extcal;
+//echo "===>" .  __FILE__ . "<br>";
+
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';
 $params = ['view' => _EXTCAL_NAV_AGENDA_WEEK, 'file' => _EXTCAL_FILE_AGENDA_WEEK];
 $GLOBALS['xoopsOption']['template_main'] = "extcal_view_{$params['view']}.tpl";
 require_once __DIR__ . '/header.php';
-/** @var Extcal\Helper $helper */
-$helper = Extcal\Helper::getInstance();
 
 /* ========================================================================== */
 get_params_YMDC($year, $month, $day, $cat);
@@ -20,12 +20,12 @@ get_params_YMDC($year, $month, $day, $cat);
 
 // Validate the date (day, month and year)
 $dayTS = mktime(0, 0, 0, $month, $day, $year);
-//$offset = date('w', $dayTS) - $helper->getConfig('week_start_day');
-//$offset = date('w', $dayTS) + 7 - $helper->getConfig('week_start_day') < 7 ? date('w', $dayTS) + 7 - $helper->getConfig('week_start_day') : 0;
-$offset = date('w', $dayTS) - $helper->getConfig('week_start_day');
+//$offset = date('w', $dayTS) - $extcalHelper->getConfig('week_start_day');
+//$offset = date('w', $dayTS) + 7 - $extcalHelper->getConfig('week_start_day') < 7 ? date('w', $dayTS) + 7 - $extcalHelper->getConfig('week_start_day') : 0;
+$offset = date('w', $dayTS) - $extcalHelper->getConfig('week_start_day');
 
 // echo "offset = {$offset}<br>";
-// echo "premier jour semaine = " . $helper->getConfig('week_start_day') . "<br>";
+// echo "premier jour semaine = " . $extcalHelper->getConfig('week_start_day') . "<br>";
 // echo "jour semaine = " . date('w', $dayTS) . "<br>";
 
 
@@ -37,7 +37,7 @@ $day    = date('j', $dayTS);
 
 /*
 $form = new \XoopsSimpleForm('', 'navigSelectBox', $params['file'], 'get');
-$form->addElement(getListYears($year, $helper->getConfig('agenda_nb_years_before'), $helper->getConfig('agenda_nb_years_after')));
+$form->addElement(getListYears($year, $extcalHelper->getConfig('agenda_nb_years_before'), $extcalHelper->getConfig('agenda_nb_years_after')));
 $form->addElement(getListMonths($month));
 $form->addElement(getListDays($day));
 $form->addElement(Extcal\Utility::getXoopsFormSelectCategories($cat));
@@ -49,11 +49,11 @@ $form->assign($xoopsTpl);
 //====================================================================
 $xoopsTpl->assign('search', getAsearch($year,$month,$day,$cat));
 
-$mTranche = $helper->getConfig('agenda_tranche_minutes'); //minutes
-$hStart   = $helper->getConfig('agenda_start_hour'); //heure debut de journee
-$hEnd     = $helper->getConfig('agenda_end_hour'); //heure fin de journee
-//$helper->getConfig('agenda_nb_days_week') = 5;
-$nbJours = $helper->getConfig('agenda_nb_days_week'); //nombre de jour
+$mTranche = $extcalHelper->getConfig('agenda_tranche_minutes'); //minutes
+$hStart   = $extcalHelper->getConfig('agenda_start_hour'); //heure debut de journee
+$hEnd     = $extcalHelper->getConfig('agenda_end_hour'); //heure fin de journee
+//$extcalHelper->getConfig('agenda_nb_days_week') = 5;
+$nbJours = $extcalHelper->getConfig('agenda_nb_days_week'); //nombre de jour
 
 /**********************************************************************/
 // Retriving events and formatting them
@@ -92,7 +92,7 @@ $cats = $catHandler->objectToArray($catHandler->getAllCat($xoopsUser));
 $xoopsTpl->assign('cats', $cats);
 
 // Making navig data
-$weekCalObj  = new Calendar_Week($year, $month, $day, $helper->getConfig('week_start_day'));
+$weekCalObj  = new Calendar_Week($year, $month, $day, $extcalHelper->getConfig('week_start_day'));
 $pWeekCalObj = $weekCalObj->prevWeek('object');
 $nWeekCalObj = $weekCalObj->nextWeek('object');
 $prevWeeekTs = nextWeek($weekCalObj->getTimestamp(),-1);
@@ -102,20 +102,20 @@ $nexWeekTs = nextWeek($weekCalObj->getTimestamp());
 $navig = [
     'prev' => [
 //         'uri'  => 'year=' . $pWeekCalObj->thisYear() . '&amp;month=' . $pWeekCalObj->thisMonth() . '&amp;day=' . $pWeekCalObj->thisDay(),
-//         'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_week'), $pWeekCalObj->getTimestamp()),
+//         'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_week'), $pWeekCalObj->getTimestamp()),
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, date("Y", $prevWeeekTs) ,date("m", $prevWeeekTs) , date("d", $prevWeeekTs), $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_week'), $prevWeeekTs)
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_week'), $prevWeeekTs)
     ],
     'this' => [
         //'uri'  => 'year=' . $weekCalObj->thisYear() . '&amp;month=' . $weekCalObj->thisMonth() . '&amp;day=' . $weekCalObj->thisDay(),
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, $weekCalObj->thisYear(), $weekCalObj->thisMonth(), $weekCalObj->thisDay(), $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_week'), $weekCalObj->getTimestamp())
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_week'), $weekCalObj->getTimestamp())
     ],
     'next' => [
         //'uri'  => 'year=' . $nWeekCalObj->thisYear() . '&amp;month=' . $nWeekCalObj->thisMonth() . '&amp;day=' . $nWeekCalObj->thisDay(),
-        //'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_week'), $nWeekCalObj->getTimestamp()),
+        //'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_week'), $nWeekCalObj->getTimestamp()),
         'uri'  =>  sprintf(_EXTCAL_URL_NAV, date("Y", $nexWeekTs) ,date("m", $nexWeekTs) , date("d", $nexWeekTs), $cat),
-        'name' => $timeHandler->getFormatedDate($helper->getConfig('nav_date_week'), $nexWeekTs)
+        'name' => $timeHandler->getFormatedDate($extcalHelper->getConfig('nav_date_week'), $nexWeekTs)
     ],
 ];
 
@@ -126,8 +126,8 @@ $xoopsTpl->assign('xoops_pagetitle', $xoopsModule->getVar('name') . ' ' . $navig
 $xoopsTpl->assign('navig', $navig);
 
 //Display tooltip
-$xoopsTpl->assign('showInfoBulle', $helper->getConfig('showInfoBulle'));
-$xoopsTpl->assign('showId', $helper->getConfig('showId'));
+$xoopsTpl->assign('showInfoBulle', $extcalHelper->getConfig('showInfoBulle'));
+$xoopsTpl->assign('showId', $extcalHelper->getConfig('showId'));
 
 // Assigning current form navig data to the template
 $xoopsTpl->assign('selectedCat', $cat);
@@ -138,7 +138,7 @@ $xoopsTpl->assign('params', $params);
 
 $tNavBar = getNavBarTabs($params['view']);
 $xoopsTpl->assign('tNavBar', $tNavBar);
-$xoopsTpl->assign('list_position', $helper->getConfig('list_position'));
+$xoopsTpl->assign('list_position', $extcalHelper->getConfig('list_position'));
 
 // echoArray($tNavBar,true);
 
