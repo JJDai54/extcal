@@ -17,7 +17,7 @@ namespace XoopsModules\Extcal\Form\Spin;
  *
  * @since           2.0.0
  *
- * @author          Jean-Jacques DELALANDRE <JJD@kiolo.com>
+ * @author          Jean-Jacques DELALANDRE <jjdelalandre@orange.fr>
  *
  * @version         FormSpin v 1.2
  */
@@ -28,8 +28,8 @@ xoops_load('XoopsFormElement');
 /**
  * A select field.
  *
- * @author      Jean-Jacques DELALANDRE <jjd@kiolo.com>
- * @copyright   JJD http:xoops.kiolo.com
+ * @author      Jean-Jacques DELALANDRE <jjdelalandre@orange.fr>
+ * @copyright   JJD https:xoops.kiolo.fr
  */
 
 /**

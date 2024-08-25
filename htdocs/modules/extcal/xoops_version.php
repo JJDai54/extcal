@@ -23,6 +23,7 @@ use XoopsModules\Extcal;
 // defined('XOOPS_ROOT_PATH') || die('XOOPS Root Path not defined');
 
 require_once __DIR__ . '/preloads/autoloader.php';
+require_once 'include/constantes.php';
 
 $moduleDirName = basename(__DIR__);
 $catHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_CAT);
@@ -55,7 +56,7 @@ setlocale(LC_TIME, $xoopsConfig['language']);
 //if (!defined('_EXT_TPL_EXTENSION')) define ('_EXT_TPL_EXTENSION', '.html');
                                 
 //***************************************************************************************
-$modversion['version']          = '2.84';
+$modversion['version']          = '3.0';
 $modversion['module_status']    = 'Beta 1';
 $modversion['release_date']     = '2024/08/11';
 $modversion['name']             = _MI_EXTCAL_NAME;
@@ -188,10 +189,12 @@ $modversion['config'][$i]['options'] = [
     '_MI_EXTCAL_NAV_LOCATION_LIST' => _EXTCAL_NAV_LOCATION_LIST
 ];
 //-----------------------------------------------------------------------------
+define ('_MI_EXTCAL_TABS_WEIGHT_DESC2', sprintf(_MI_EXTCAL_TABS_WEIGHT_DESC,_EXTCAL_NAV_LIST));
+
 ++$i;
 $modversion['config'][$i]['name']        = 'weight_tabs';
 $modversion['config'][$i]['title']       = '_MI_EXTCAL_TABS_WEIGHT';
-$modversion['config'][$i]['description'] = '_MI_EXTCAL_TABS_WEIGHT_DESC';
+$modversion['config'][$i]['description'] = '_MI_EXTCAL_TABS_WEIGHT_DESC2';
 $modversion['config'][$i]['formtype']    = 'textarea';
 $modversion['config'][$i]['valuetype']   = 'text';
 //$modversion['config'][$i]['default'] = "10,20,30,40,50,_EXTCAL_TS_MINUTE,70,80,90,100,0";
@@ -313,7 +316,7 @@ $modversion['config'][$i]['title']       = '_MI_EXTCAL_EY_DATE_PATTERN';
 $modversion['config'][$i]['description'] = '_MI_EXTCAL_DATE_PATTERN_DESC';
 $modversion['config'][$i]['formtype']    = 'textbox';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default']     = _MI_EXTCAL_EY_DATE_PATTERN_VALUE;
+$modversion['config'][$i]['default']     = _SHORTDATESTRING;
 ++$i;
 $modversion['config'][$i]['name']        = 'nav_date_month';
 $modversion['config'][$i]['title']       = '_MI_EXTCAL_NM_DATE_PATTERN';
@@ -327,7 +330,7 @@ $modversion['config'][$i]['title']       = '_MI_EXTCAL_EM_DATE_PATTERN';
 $modversion['config'][$i]['description'] = '_MI_EXTCAL_DATE_PATTERN_DESC';
 $modversion['config'][$i]['formtype']    = 'textbox';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default']     = _MI_EXTCAL_EM_DATE_PATTERN_VALUE;
+$modversion['config'][$i]['default']     = _SHORTDATESTRING;
 ++$i;
 $modversion['config'][$i]['name']        = 'nav_date_week';
 $modversion['config'][$i]['title']       = '_MI_EXTCAL_NW_DATE_PATTERN';
@@ -341,7 +344,7 @@ $modversion['config'][$i]['title']       = '_MI_EXTCAL_EW_DATE_PATTERN';
 $modversion['config'][$i]['description'] = '_MI_EXTCAL_DATE_PATTERN_DESC';
 $modversion['config'][$i]['formtype']    = 'textbox';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default']     = _MI_EXTCAL_EW_DATE_PATTERN_VALUE;
+$modversion['config'][$i]['default']     = _SHORTDATESTRING;
 ++$i;
 $modversion['config'][$i]['name']        = 'nav_date_day';
 $modversion['config'][$i]['title']       = '_MI_EXTCAL_ND_DATE_PATTERN';
@@ -355,7 +358,7 @@ $modversion['config'][$i]['title']       = '_MI_EXTCAL_ED_DATE_PATTERN';
 $modversion['config'][$i]['description'] = '_MI_EXTCAL_DATE_PATTERN_DESC';
 $modversion['config'][$i]['formtype']    = 'textbox';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default']     = _MI_EXTCAL_ED_DATE_PATTERN_VALUE;
+$modversion['config'][$i]['default']     = _SHORTDATESTRING;
 ++$i;
 $modversion['config'][$i]['name']        = 'event_date_event';
 $modversion['config'][$i]['title']       = '_MI_EXTCAL_EE_DATE_PATTERN';
@@ -369,7 +372,7 @@ $modversion['config'][$i]['title']       = '_MI_EXTCAL_EB_DATE_PATTERN';
 $modversion['config'][$i]['description'] = '_MI_EXTCAL_DATE_PATTERN_DESC';
 $modversion['config'][$i]['formtype']    = 'textbox';
 $modversion['config'][$i]['valuetype']   = 'text';
-$modversion['config'][$i]['default']     = _MI_EXTCAL_EB_DATE_PATTERN_VALUE;
+$modversion['config'][$i]['default']     = _SHORTDATESTRING;
 ++$i;
 $modversion['config'][$i]['name']        = 'event_date_infobulle';
 $modversion['config'][$i]['title']       = '_MI_EXTCAL_IB_DATE_PATTERN';

@@ -14,7 +14,7 @@
  *
  * @since               2.2
  *
- * @author              JJDai <http://xoops.kiolo.com>
+ * @author              JJDai <https://xoops.kiolo.fr>
  **/
 
 //----------------------------------------------------

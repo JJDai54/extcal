@@ -84,7 +84,7 @@ $adminmenu[] = [
 // Blocks Admin
 // $adminmenu[] = [
 //     'title' => _MI_EXTCAL_BLOCKS_ADMIN, //'Block/Group Admin'
-//     //    'title' => constant('CO_' . $moduleDirNameUpper . '_' . 'BLOCKS'),
+//     //    'title' => constant('_CO_' . $moduleDirNameUpper . '_' . 'BLOCKS'),
 //     'link'  => 'admin/blocksadmin.php',
 //     'icon'  => $pathIcon32 . '/block.png',
 // ];
@@ -105,6 +105,7 @@ $adminmenu[] = [
     'icon'  => $pathIcon32 . '/about.png',
 ];
 
+/*
 //---modif JJDai
 $adminmenu[] = [
     'title' => _MI_EXTCAL_PREFERENCE,
@@ -113,8 +114,6 @@ $adminmenu[] = [
     'icon'  => $pathIcon32 . '/exec.png'
 ];
 
-
-/*
 $adminmenu[] = [
     'title' => _MI_EXTCAL_UPGRADE,
     'menu'  => "update",

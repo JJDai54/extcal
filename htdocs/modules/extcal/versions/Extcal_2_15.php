@@ -15,7 +15,7 @@
  * @package      extcal
  * @since
  * @author       XOOPS Development Team,
- * @author       JJDai <http://xoops.kiolo.com>
+ * @author       JJDai <https://xoops.kiolo.fr>
  */
 //----------------------------------------------------
 class Extcal_2_15

@@ -167,8 +167,8 @@ _extcal
 			blocks\random_events.php
 			blocks\spotlight_events.php
 			blocks\upcoming.php
-		-class
-			-Common
+		+class
+			+Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
 				class\Common\FilesManagement.php
@@ -430,7 +430,7 @@ _extcal
 			docs\readme.txt
 			docs\todo.txt
 			docs\upgrade.txt
-		+images
+		-images
 			-fleches
 				-vert
 					images\fleches\vert\fleche-droite.png
@@ -438,7 +438,7 @@ _extcal
 					images\fleches\vert\index.html
 				images\fleches\index.html
 			images\index.html
-		+include
+		-include
 			include\AC_RunActiveContent.js
 			include\admin.js
 			include\agenda_fnc.php
@@ -477,7 +477,7 @@ _extcal
 				language\english\index.html
 				language\english\main.php
 				language\english\modinfo.php
-			-french
+			+french
 				-help
 					language\french\help\extcal_help.html
 					language\french\help\help.html
@@ -727,74 +727,46 @@ _extcal
 		view_year.php
 		xoops_version.php
 [Open project files]
-0=admin\menu.php
-1=xoops_version.php
-2=tests\modules\profile\admin\admin_header.php
-3=admin\admin_header.php
-4=header.php
-5=class\EventHandler.php
-6=admin\event.php
-7=class\CategoryHandler.php
-8=index.php
-9=view_agenda-day.php
-10=class\pear\Calendar\Month.php
-11=view_calendar-month.php
-12=include\agenda_fnc.php
-13=include\constantes.php
-14=view_calendar-week.php
-15=sql\mysql.sql
-16=docs\changelog.txt
+0=language\english\modinfo.php
+1=admin\menu.php
+2=language\french\main.php
+3=xoops_version.php
+4=class\Common\VersionChecks.php
+5=sql\mysql.sql
+6=versions\Extcal_2_35.php
+7=include\mail_fnc.php
+8=class\Form\Spin\FormSpin.php
+9=docs\changelog.txt
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
+Selected=docs\changelog.txt
+[language\english\modinfo.php]
+TopLine=7
+Caret=4,22
 [admin\menu.php]
-TopLine=79
-Caret=1,132
+TopLine=39
+Caret=39,95
+[language\french\main.php]
+TopLine=122
+Caret=63,141
 [xoops_version.php]
-TopLine=37
-Caret=39,58
-[tests\modules\profile\admin\admin_header.php]
-TopLine=1
-Caret=2,54
-[admin\admin_header.php]
-TopLine=13
-Caret=8,39
-[header.php]
-TopLine=9
-Caret=1,21
-[class\EventHandler.php]
-TopLine=1000
-Caret=37,1030
-[admin\event.php]
-TopLine=1
-Caret=2,29
-[class\CategoryHandler.php]
-TopLine=148
-Caret=20,160
-[index.php]
-TopLine=1
-Caret=38,8
-[view_agenda-day.php]
-TopLine=1
-Caret=1,12
-[class\pear\Calendar\Month.php]
-TopLine=78
-Caret=1,124
-[view_calendar-month.php]
-TopLine=93
-Caret=32,126
-[include\agenda_fnc.php]
-TopLine=472
-Caret=5,475
-[include\constantes.php]
-TopLine=101
-Caret=9,120
-[view_calendar-week.php]
-TopLine=69
-Caret=54,102
+TopLine=31
+Caret=39,59
+[class\Common\VersionChecks.php]
+TopLine=90
+Caret=40,122
 [sql\mysql.sql]
+TopLine=39
+Caret=15,39
+[versions\Extcal_2_35.php]
 TopLine=1
-Caret=22,18
+Caret=53,17
+[include\mail_fnc.php]
+TopLine=214
+Caret=1,233
+[class\Form\Spin\FormSpin.php]
+TopLine=13
+Caret=42,31
 [docs\changelog.txt]
 TopLine=1
-Caret=9,1
+Caret=1,12

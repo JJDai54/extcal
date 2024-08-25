@@ -34,9 +34,9 @@ $side_select->addOptionArray([
                                  9 => _AM_SYSTEM_BLOCKS_CBBOTTOM,
                              ]);
 $form->addElement($side_select);
-$form->addElement(new \XoopsFormText(constant('CO_' . $moduleDirNameUpper . '_' . 'WEIGHT'), 'bweight', 2, 5, $block['weight']));
-$form->addElement(new \XoopsFormRadioYN(constant('CO_' . $moduleDirNameUpper . '_' . 'VISIBLE'), 'bvisible', $block['visible']));
-$mod_select = new \XoopsFormSelect(constant('CO_' . $moduleDirNameUpper . '_' . 'VISIBLEIN'), 'bmodule', $block['modules'], 5, true);
+$form->addElement(new \XoopsFormText(constant('_CO_' . $moduleDirNameUpper . '_' . 'WEIGHT'), 'bweight', 2, 5, $block['weight']));
+$form->addElement(new \XoopsFormRadioYN(constant('_CO_' . $moduleDirNameUpper . '_' . 'VISIBLE'), 'bvisible', $block['visible']));
+$mod_select = new \XoopsFormSelect(constant('_CO_' . $moduleDirNameUpper . '_' . 'VISIBLEIN'), 'bmodule', $block['modules'], 5, true);
 /** @var \XoopsModuleHandler $moduleHandler */
 $moduleHandler = xoops_getHandler('module');
 $criteria      = new \CriteriaCompo(new \Criteria('hasmain', 1));

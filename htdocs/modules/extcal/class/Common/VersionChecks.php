@@ -45,7 +45,7 @@ trait VersionChecks
 
         if (version_compare($currentVer, $requiredVer, '<')) {
             $success = false;
-            $module->setErrors(sprintf(constant('CO_' . $moduleDirNameUpper . '_ERROR_BAD_XOOPS'), $requiredVer, $currentVer));
+            $module->setErrors(sprintf(constant('_CO_' . $moduleDirNameUpper . '_ERROR_BAD_XOOPS'), $requiredVer, $currentVer));
         }
 
         return $success;
@@ -74,7 +74,7 @@ trait VersionChecks
 
         if (false !== $reqVer && '' !== $reqVer) {
             if (version_compare($verNum, $reqVer, '<')) {
-                $module->setErrors(sprintf(constant('CO_' . $moduleDirNameUpper . '_ERROR_BAD_PHP'), $reqVer, $verNum));
+                $module->setErrors(sprintf(constant('_CO_' . $moduleDirNameUpper . '_ERROR_BAD_PHP'), $reqVer, $verNum));
                 $success = false;
             }
         }
@@ -119,7 +119,7 @@ trait VersionChecks
                     $latestVersion     = $file[0]->tag_name;
                     $prerelease        = $file[0]->prerelease;
                     if ('master' !== $latestVersionLink) {
-                        $update = constant('CO_' . $moduleDirNameUpper . '_' . 'NEW_VERSION') . $latestVersion;
+                        $update = constant('_CO_' . $moduleDirNameUpper . '_' . 'NEW_VERSION') . $latestVersion;
                     }
                     //"PHP-standardized" version
                     $latestVersion = mb_strtolower($latestVersion);

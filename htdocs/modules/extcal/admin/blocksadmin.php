@@ -22,7 +22,7 @@ $moduleDirNameUpper = mb_strtoupper($moduleDirName); //$capsDirName
 
 if (!is_object($GLOBALS['xoopsUser']) || !is_object($xoopsModule)
     || !$GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
-    exit(constant('CO_' . $moduleDirNameUpper . '_' . 'ERROR403'));
+    exit(constant('_CO_' . $moduleDirNameUpper . '_' . 'ERROR403'));
 }
 if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
     require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
@@ -73,15 +73,15 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
         $module_list[0]  = _AM_SYSTEM_BLOCKS_ALLPAGES;
         ksort($module_list);
         echo "
-        <h4 style='text-align:left;'>" . constant('CO_' . $moduleDirNameUpper . '_' . 'BADMIN') . '</h4>';
+        <h4 style='text-align:left;'>" . constant('_CO_' . $moduleDirNameUpper . '_' . 'BADMIN') . '</h4>';
         $moduleHandler = xoops_getHandler('module');
         echo "<form action='" . $_SERVER['PHP_SELF'] . "' name='blockadmin' method='post'>";
         echo $GLOBALS['xoopsSecurity']->getTokenHTML();
         echo "<table width='100%' class='outer' cellpadding='4' cellspacing='1'>
         <tr valign='middle'><th align='center'>"
-             . constant('CO_' . $moduleDirNameUpper . '_' . 'TITLE')
+             . constant('_CO_' . $moduleDirNameUpper . '_' . 'TITLE')
              . "</th><th align='center' nowrap='nowrap'>"
-             . constant('CO_' . $moduleDirNameUpper . '_' . 'SIDE')
+             . constant('_CO_' . $moduleDirNameUpper . '_' . 'SIDE')
              . '<br>'
              . _LEFT
              . '-'
@@ -89,12 +89,12 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
              . '-'
              . _RIGHT
              . "</th><th align='center'>"
-             . constant('CO_'
+             . constant('_CO_'
                         . $moduleDirNameUpper
                         . '_'
                         . 'WEIGHT')
              . "</th><th align='center'>"
-             . constant('CO_' . $moduleDirNameUpper . '_' . 'VISIBLE')
+             . constant('_CO_' . $moduleDirNameUpper . '_' . 'VISIBLE')
              . "</th><th align='center'>"
              . _AM_SYSTEM_BLOCKS_VISIBLEIN
              . "</th><th align='center'>"
@@ -102,7 +102,7 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
              . "</th><th align='center'>"
              . _AM_SYSTEM_BLOCKS_BCACHETIME
              . "</th><th align='center'>"
-             . constant('CO_' . $moduleDirNameUpper . '_' . 'ACTION')
+             . constant('_CO_' . $moduleDirNameUpper . '_' . 'ACTION')
              . '</th></tr>
         ';
         $block_arr   = \XoopsBlock::getByModule($xoopsModule->mid());
@@ -304,7 +304,7 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
         $is_custom = ('C' === $myblock->getVar('block_type') || 'E' === $myblock->getVar('block_type'));
         $block     = [
             'title'      => $myblock->getVar('title') . ' Clone',
-            'form_title' => constant('CO_' . $moduleDirNameUpper . '_' . 'BLOCKS_CLONEBLOCK'),
+            'form_title' => constant('_CO_' . $moduleDirNameUpper . '_' . 'BLOCKS_CLONEBLOCK'),
             'name'       => $myblock->getVar('name'),
             'side'       => $myblock->getVar('side'),
             'weight'     => $myblock->getVar('weight'),
@@ -509,7 +509,7 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
                 $GLOBALS['xoopsDB']->query($sql);
             }
         }
-        redirect_header($_SERVER['PHP_SELF'], 1, constant('CO_' . $moduleDirNameUpper . '_' . 'UPDATE_SUCCESS'));
+        redirect_header($_SERVER['PHP_SELF'], 1, constant('_CO_' . $moduleDirNameUpper . '_' . 'UPDATE_SUCCESS'));
     }
 
     if ('list' === $op) {
@@ -552,7 +552,7 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
                 }
             }
         }
-        redirect_header($_SERVER['PHP_SELF'], 1, constant('CO_' . $moduleDirNameUpper . '_' . 'UPDATE_SUCCESS'));
+        redirect_header($_SERVER['PHP_SELF'], 1, constant('_CO_' . $moduleDirNameUpper . '_' . 'UPDATE_SUCCESS'));
     }
     if ('clone' === $op) {
         cloneBlock($bid);
@@ -570,5 +570,5 @@ if ($GLOBALS['xoopsUser']->isAdmin($xoopsModule->mid())) {
         isBlockCloned($bid, $bside, $bweight, $bvisible, $bcachetime, $bmodule, $options);
     }
 } else {
-    echo constant('CO_' . $moduleDirNameUpper . '_' . 'ERROR403');
+    echo constant('_CO_' . $moduleDirNameUpper . '_' . 'ERROR403');
 }

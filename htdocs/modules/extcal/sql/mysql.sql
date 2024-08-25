@@ -76,7 +76,7 @@ CREATE TABLE `extcal_file` (
 
 
 CREATE TABLE `extcal_location` (
-  `location_id`           INT(5)       NOT NULL AUTO_INCREMENT,
+  `location_id`  INT(11)      NOT NULL AUTO_INCREMENT,
   `nom`          VARCHAR(255) NOT NULL,
   `description`  TEXT         NULL,
   `logo`         VARCHAR(255) NOT NULL,

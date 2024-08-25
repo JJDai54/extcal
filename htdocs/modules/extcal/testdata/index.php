@@ -64,7 +64,7 @@ function loadSampleData()
         }
     }
 
-    redirect_header('../admin/index.php', 1, constant('CO_' . $moduleDirNameUpper . '_' . 'SAMPLEDATA_SUCCESS'));
+    redirect_header('../admin/index.php', 1, constant('_CO_' . $moduleDirNameUpper . '_' . 'SAMPLEDATA_SUCCESS'));
 }
 
 function saveSampleData()
@@ -78,7 +78,7 @@ function saveSampleData()
         \Xmf\Database\TableLoad::saveTableToYamlFile($table, $table . '_' . date('Y-m-d H-i-s') . '.yml');
     }
 
-    redirect_header('../admin/index.php', 1, constant('CO_' . $moduleDirNameUpper . '_' . 'SAMPLEDATA_SUCCESS'));
+    redirect_header('../admin/index.php', 1, constant('_CO_' . $moduleDirNameUpper . '_' . 'SAMPLEDATA_SUCCESS'));
 }
 
 function exportSchema()
@@ -90,9 +90,9 @@ function exportSchema()
         $migrate = new  \Xmf\Database\Migrate($moduleDirName);
         $migrate->saveCurrentSchema();
 
-        redirect_header('../admin/index.php', 1, constant('CO_' . $moduleDirNameUpper . '_' . 'EXPORT_SCHEMA_SUCCESS'));
+        redirect_header('../admin/index.php', 1, constant('_CO_' . $moduleDirNameUpper . '_' . 'EXPORT_SCHEMA_SUCCESS'));
     }
     catch (\Exception $e) {
-        exit(constant('CO_' . $moduleDirNameUpper . '_' . 'EXPORT_SCHEMA_ERROR'));
+        exit(constant('_CO_' . $moduleDirNameUpper . '_' . 'EXPORT_SCHEMA_ERROR'));
     }
 }

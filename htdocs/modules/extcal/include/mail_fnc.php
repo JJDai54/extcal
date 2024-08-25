@@ -230,7 +230,6 @@ function extcal_SendMail(
 if ($mail_body == '') $mail_body = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
     //$bEcho=false;
 //    echo "<hr>function sendsMail<hr>";
-    // $destinataires = array('jjd@kiolo.com','jjdelalandre@wanadoo.fr','admin@win-trading.com');
     //$mail_fromName = "test jjd hermes";
     if ('' == $mail_fromName) {
         $mail_fromName = $mail_fromemail;
