@@ -2,6 +2,7 @@
 //echo "===>" .  __FILE__ . "<br>";
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
+$mainfile = dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once __DIR__ . '/include/constantes.php';
 $params                                  = ['view' => _EXTCAL_NAV_NEW_EVENT, 'file' => _EXTCAL_FILE_NEW_EVENT];
 $GLOBALS['xoopsOption']['template_main'] = "extcal_view_{$params['view']}.tpl";

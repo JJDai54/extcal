@@ -17,8 +17,10 @@ HTServer=localhost
 Extensions=*.*
 [Project tree]
 _extcal
+	+JJD
+		..\..\Frameworks\janus\class\xoopsform\iconselect\formiconselect.php
 	+extcal
-		+admin
+		-admin
 			admin\about.php
 			admin\admin_footer.php
 			admin\admin_header.php
@@ -168,7 +170,7 @@ _extcal
 			blocks\spotlight_events.php
 			blocks\upcoming.php
 		+class
-			+Common
+			-Common
 				class\Common\Breadcrumb.php
 				class\Common\Configurator.php
 				class\Common\FilesManagement.php
@@ -271,7 +273,7 @@ _extcal
 				class\Form\FormRRuleCheckBox.php
 				class\Form\index.html
 				class\Form\ThemeForm.php
-			-pear
+			+pear
 				+Calendar
 					-Decorator
 						class\pear\Calendar\Decorator\index.html
@@ -374,7 +376,7 @@ _extcal
 						class\pear\Calendar\tests\week_firstday_0_test.php
 						class\pear\Calendar\tests\week_test.php
 						class\pear\Calendar\tests\year_test.php
-					-Util
+					+Util
 						class\pear\Calendar\Util\index.html
 						class\pear\Calendar\Util\Textual.php
 						class\pear\Calendar\Util\Uri.php
@@ -506,7 +508,7 @@ _extcal
 			sql\requetes2install.sql
 			sql\requetes2uninstall.sql
 			sql\x251_extcal_saints.sql
-		+templates
+		-templates
 			+admin
 				templates\admin\extcal_admin_cat_list.tpl
 				templates\admin\extcal_debug_info.tpl
@@ -737,6 +739,25 @@ _extcal
 7=include\mail_fnc.php
 8=class\Form\Spin\FormSpin.php
 9=docs\changelog.txt
+10=admin\admin_header.php
+11=event.php
+12=class\Config.php
+13=blocks\minical.php
+14=tests\modules\profile\userinfo.php
+15=header.php
+16=post.php
+17=..\..\Frameworks\janus\class\xoopsform\iconselect\formiconselect.php
+18=new_event.php
+19=class\EventHandler.php
+20=view_week.php
+21=templates\extcal_mail_member_text.tpl
+22=include\functions0.php
+23=include\constantes.php
+24=view_new-event.php
+25=include\common.php
+26=tests\modules\pm\viewpmsg.php
+27=rss.php
+28=class\pear\Calendar\Util\Textual.php
 [Selected Project Files]
 Main=
 Selected=docs\changelog.txt
@@ -744,20 +765,20 @@ Selected=docs\changelog.txt
 TopLine=7
 Caret=4,22
 [admin\menu.php]
-TopLine=39
-Caret=39,95
+TopLine=29
+Caret=1,29
 [language\french\main.php]
 TopLine=122
 Caret=63,141
 [xoops_version.php]
-TopLine=31
-Caret=39,59
+TopLine=47
+Caret=46,61
 [class\Common\VersionChecks.php]
 TopLine=90
 Caret=40,122
 [sql\mysql.sql]
-TopLine=39
-Caret=15,39
+TopLine=13
+Caret=15,25
 [versions\Extcal_2_35.php]
 TopLine=1
 Caret=53,17
@@ -769,4 +790,61 @@ TopLine=13
 Caret=42,31
 [docs\changelog.txt]
 TopLine=1
-Caret=1,12
+Caret=1,4
+[admin\admin_header.php]
+TopLine=13
+Caret=1,1
+[event.php]
+TopLine=54
+Caret=23,82
+[class\Config.php]
+TopLine=1
+Caret=34,41
+[blocks\minical.php]
+TopLine=61
+Caret=1,79
+[tests\modules\profile\userinfo.php]
+TopLine=25
+Caret=35,44
+[header.php]
+TopLine=11
+Caret=1,27
+[post.php]
+TopLine=9
+Caret=26,32
+[..\..\Frameworks\janus\class\xoopsform\iconselect\formiconselect.php]
+TopLine=217
+Caret=12,233
+[new_event.php]
+TopLine=1
+Caret=40,23
+[class\EventHandler.php]
+TopLine=1268
+Caret=1,1291
+[view_week.php]
+TopLine=19
+Caret=11,31
+[templates\extcal_mail_member_text.tpl]
+TopLine=1
+Caret=5,18
+[include\functions0.php]
+TopLine=98
+Caret=17,110
+[include\constantes.php]
+TopLine=12
+Caret=21,36
+[view_new-event.php]
+TopLine=14
+Caret=12,44
+[include\common.php]
+TopLine=25
+Caret=45,45
+[tests\modules\pm\viewpmsg.php]
+TopLine=184
+Caret=1,230
+[rss.php]
+TopLine=1
+Caret=1,51
+[class\pear\Calendar\Util\Textual.php]
+TopLine=128
+Caret=15,130

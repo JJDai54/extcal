@@ -57,8 +57,8 @@ setlocale(LC_TIME, $xoopsConfig['language']);
                                 
 //***************************************************************************************
 $modversion['version']          = '3.0';
-$modversion['module_status']    = 'Beta 1';
-$modversion['release_date']     = '2024/08/11';
+$modversion['module_status']    = 'Beta 2';
+$modversion['release_date']     = '2026/04/20';
 $modversion['name']             = _MI_EXTCAL_NAME;
 $modversion['description']      = _MI_EXTCAL_DESC;
 $modversion['credits']          = 'Zoullou, Mage, Mamba, JJDai (JJ Delalandre)';

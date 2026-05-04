@@ -29,6 +29,7 @@ require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 //require_once __DIR__   . '/class/form/extcalform.php';
 //require_once __DIR__   . '/class/perm.php';
 
+require_once __DIR__ . '/header.php';
 require_once __DIR__ . '/class/Utility.php';
 require_once __DIR__ . '/include/constantes.php';
 

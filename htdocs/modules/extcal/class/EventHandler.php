@@ -1187,7 +1187,7 @@ $allCatsAllowed = $catHandler->getAllCatArray($xoopsUser);
             $event_price    = $data['event_price'];
             $location_id    = $data['location_id'];
             $event_icone    = $data['event_icone'];
-
+//echo "<hr>event_icone : {$event_icone}<hr>";
             // Configuring recurring form
             $eventOptions = explode('|', $this->getRecurRules($_POST));
             $reccurMode   = $eventOptions[0];
@@ -1279,12 +1279,22 @@ $xoTheme->addStylesheet('modules/extcal/include/style.css');
         $form->addElement($catSelect, true);
         //-----------------------------------------------------------
 
-        $file_path = dirname(__DIR__) . '/assets/css/images';
-        $tf        = \XoopsLists::getImgListAsArray($file_path);
-        array_unshift($tf, _MD_EXTCAL_NONE);
-        $xfIcones = new \XoopsFormSelect(_MD_EXTCAL_ICONE, 'event_icone', $event_icone, '');
-        $xfIcones->addOptionArray($tf);
-        $form->addElement($xfIcones, false);
+//        $file_path = dirname(__DIR__) . '/assets/css/images';
+//         $tf        = \XoopsLists::getImgListAsArray($file_path);
+//         array_unshift($tf, _MD_EXTCAL_NONE);
+//         $xfIcones = new \XoopsFormSelect(_MD_EXTCAL_ICONE, 'event_icone', $event_icone, '');
+//         $xfIcones->addOptionArray($tf);
+//         $form->addElement($xfIcones, false);
+include_once XOOPS_ROOT_PATH . "/Frameworks/janus/include/constantes.php"; 
+include_once XOOPS_ROOT_PATH . "/Frameworks/janus/class/xoopsform/iconselect/formiconselect.php"; 
+       
+        $file_path = _EXTCAL_PATH . '/assets/css/images';
+
+        $inpIcone = new \XoopsFormIconSelect(_MD_EXTCAL_ICONE, 'event_icone' , $event_icone, $file_path);
+        $inpIcone->setExtension(true);
+        $inpIcone->setGridIconNumber(5,6);
+        $form->addElement($inpIcone, false);
+
         //-----------------------------------------------------------
         //location
         $locationHandler = Extcal\Helper::getInstance()->getHandler(_EXTCAL_CLN_LOCATION);

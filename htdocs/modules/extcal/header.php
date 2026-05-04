@@ -18,7 +18,7 @@
  */
 
 use XoopsModules\Extcal;
-echo "===>" .  __FILE__ . "<br>";
+//echo "===>" .  __FILE__ . "<br>";
 
 
 require_once XOOPS_ROOT_PATH . '/header.php';
