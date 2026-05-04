@@ -127,7 +127,8 @@ class Calendar_Util_Textual
         $days = [];
         for ($i = 0; $i <= 6; ++$i) {
             $stamp = mktime(0, 0, 0, 11, $i + 2, 2003);
-            $day   = strftime($formats[$format], $stamp);
+            //$day   = strftime($formats[$format], $stamp);
+            $day   = date($formats[$format], $stamp);
             switch ($format) {
                 case 'one':
                     $day = mb_substr($day, 0, 1);
